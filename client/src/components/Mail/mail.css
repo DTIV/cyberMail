@@ -1,0 +1,25 @@
+
+
+
+.ck{
+    height: 500px;
+    width: var(---editor-height);
+}
+
+
+.ckedit{
+    color: white;
+}
+.title{
+    color: red;
+}
+
+.mail-input{
+    padding: 0.5rem;
+    width: 100%;
+}
+
+.create-mail-wrap{
+    width: var(---editor-height);
+    margin: auto;
+}

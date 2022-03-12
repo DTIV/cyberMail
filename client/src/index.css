@@ -1,0 +1,79 @@
+@import url('http://fonts.cdnfonts.com/css/print-clearly');
+@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Roboto:wght@300&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+.full-height {
+  height: 100%;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
+:root{
+    ---bg-txt-col: #121212;
+    ---bg-col: #fff;
+    ---brdr-col: #121212;
+    --primary-color: #005fff;
+    --primary-color-alpha: #005fff1a;
+  ---brad: 0.5em;
+  ---up-col: lime;
+  ---down-col: red;
+  ---el1-col: #1d1d1d;
+  ---el2-col: #212121;
+  ---editor-height: 1000px;
+}
+
+body{
+  border: solid 1px green;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.3rem;
+}
+
+.channel-list-sidebar {
+  width: 72px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    var(--primary-color);
+  box-shadow: 1px 0px 0px rgba(0, 0, 0, 0.25);
+}
+
+.main{
+  border: solid orange 1px;
+  display: grid;
+  grid-template-columns: 0.3fr 1fr 0.3fr;
+  height: 90vh;
+}
+
+@media screen and (max-width: 750px) {
+  .main{
+    /* border: solid orange 1px; */
+    display: block;
+    
+  }
+
+  .left-sidebar{
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1750px) {
+  .main{
+    /* border: solid orange 1px; */
+    display: grid;
+    grid-template-columns: 0.3fr 1fr;
+    height: 90vh;
+  }
+
+  .right-sidebar{
+    display: none;
+  }
+}

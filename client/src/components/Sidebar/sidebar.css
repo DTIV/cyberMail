@@ -1,0 +1,149 @@
+/* NAV */
+.mobile-left-sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left:0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+.mobile-right-sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right:0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+.mobile-sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.mobile-sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.mobile-sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .mobile-sidenav {padding-top: 15px;}
+  .mobile-sidenav a {font-size: 18px;}
+}
+/* NAVEND */
+
+
+.sidenav {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  height: 100%!important;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+  
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.right-sidebar{
+  padding: 1rem;
+}
+
+.main-card{
+  /* border: black solid 1px; */
+  width: 100%;
+  background-color: inherit;
+  font-size: 1.2rem;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: 0.5s all ease;
+}
+
+.hide{
+  display: none;
+}
+
+.contact{
+  height: 0;
+  width: 100%;
+  overflow-y: hidden;
+  transition: 0.5s;
+}
+
+.contact-card{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 0.5rem;
+}
+
+.contact-btn{
+  height: 0;
+  padding: 0.5rem;
+  width: 100%;
+  height: 100%;
+}
+
+.friend-img{
+  height: 75px;
+  width: 75px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.friend-search-wrap{
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.friend-search{
+  padding: 0.5rem;
+  width: 90%;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}

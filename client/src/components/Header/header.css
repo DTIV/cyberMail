@@ -1,0 +1,63 @@
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2rem;
+    align-items: center;
+    height: 10vh;
+    z-index: 2;
+}
+
+.qv-logo{
+    font-size: 2rem;
+}
+
+.dash-logo{
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+.sidenav-netwrap{
+    display: grid;
+    grid-template-columns: repeat(3,auto);
+    grid-gap: 1rem;
+    align-content: center;
+    justify-content: center;
+}
+
+.account-menu-txt{
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+.connect-btn,
+.select-btn{
+    color: var(---bg-txt-col);
+    padding: 0.5rem;
+    background: inherit;
+    border: var(---brdr-col) 1px solid;
+    border-radius: var(---brad);
+    cursor: pointer;
+}
+
+.menu{
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-gap: 2rem;
+}
+
+.select-option{
+    background-color: var(---bg-col);
+
+}
+
+.connect-btn,
+.select-btn{
+    color: var(---bg-txt-col);
+    padding: 0.5rem;
+    background: inherit;
+    border: var(---brdr-col) 1px solid;
+    border-radius: var(---brad);
+    cursor: pointer;
+}
