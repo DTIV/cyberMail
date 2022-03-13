@@ -12,8 +12,8 @@ const Header = (props) => {
 
     return (
     <div className='navbar'>
-        <div>
-            <span className='qv-logo'>CYBER</span><span className='dash-logo'>Mail</span> 
+        <div className='logo'>
+            <span className='cy-logo'>CYBER</span><span className='mail-logo'>Mail</span> 
         </div>
         <div className='sidenav-netwrap'>
             <div className='account-menu-txt'>

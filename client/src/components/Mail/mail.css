@@ -19,7 +19,76 @@
     width: 100%;
 }
 
+.mail-list{
+    width: 100%;
+}
+.mailtop{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.5rem 0;
+}
+
+.ham-btn, .contact-widget-btn{
+    display: none;
+}
+
+.mail-title{
+    font-size: var(---large-title);
+    text-align: center;
+}
+.widget-btn{
+    font-size: 2.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.center-main{
+    width: 100%;
+}
 .create-mail-wrap{
     width: var(---editor-height);
     margin: auto;
 }
+
+.mail-wrap{
+    padding: 0.2rem 1rem;
+}
+.mail-card{
+    border: solid black 1px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+}
+.mail-check, .mail-del{
+    width: 20px;
+    height: 20px;
+}
+.data-tb{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.main-sec{
+    height: 90vh;
+}
+
+.right-sidebar{
+    overflow-y: scroll;
+}
+@media screen and (max-width: 750px) {
+    .main{
+        display: block;
+    }
+    .ham-btn{
+      display: flex;
+    }
+  }
+@media screen and (max-width: 1750px) {  
+    .contact-widget-btn{
+      display: flex;
+    }
+  }

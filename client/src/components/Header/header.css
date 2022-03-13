@@ -8,11 +8,11 @@
     z-index: 2;
 }
 
-.qv-logo{
+.cy-logo{
     font-size: 2rem;
 }
 
-.dash-logo{
+.mail-logo{
     font-size: 2.5rem;
     font-weight: 600;
 }
@@ -41,12 +41,6 @@
     cursor: pointer;
 }
 
-.menu{
-    display: grid;
-    grid-template-columns: repeat(3, auto);
-    grid-gap: 2rem;
-}
-
 .select-option{
     background-color: var(---bg-col);
 
@@ -61,3 +55,32 @@
     border-radius: var(---brad);
     cursor: pointer;
 }
+
+@media screen and (max-width: 370px) {
+    .sidenav-netwrap{
+        grid-template-columns: 1fr;
+    }
+
+    .connect-btn{
+        width: 100%;
+    }
+
+    .account-menu-txt{
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 580px) {
+    .navbar{
+        display: block;
+        height: 100%;
+    }
+
+    .sidenav-netwrap{
+        margin: 1rem 0;
+    }
+
+    .logo{
+        text-align: center;
+    }
+  }

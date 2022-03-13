@@ -1,7 +1,8 @@
 import React from 'react'
 import { useState, useEffect } from "react";
-
-  
+import { Link } from 'react-router-dom'
+import Rightbar from './Rightbar';
+import "./sidebar.css"
 
 
 
@@ -11,16 +12,25 @@ const MobileSidebar = (props) => {
     
     document.getElementById(`mobile-${e.target.dataset.side}-mySidenav`).style.width = "0";
   }
-  console.log(props.side)
-  return (
-    <div id={`mobile-${props.side}-mySidenav`} class={`mobile-sidenav mobile-${props.side}-sidenav`}>
+
+  if(props.side === "left"){
+    return (
+      <div id={`mobile-${props.side}-mySidenav`} className={`mobile-sidenav mobile-${props.side}-sidenav`}>
+          <a className="closebtn" onClick={(e)=>closeNav(e)} data-side={props.side}>&times;</a>
+          <Link to="/new">Create</Link>
+          <Link to="/">Inbox</Link>
+          <Link to="/sent">Sent</Link>
+          <Link to="/settings">Settings</Link>
+      </div>
+    )
+  }else{
+    return(
+      <div id={`mobile-${props.side}-mySidenav`} className={`mobile-sidenav mobile-${props.side}-sidenav`}>
         <a className="closebtn" onClick={(e)=>closeNav(e)} data-side={props.side}>&times;</a>
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Clients</a>
-        <a href="#">Contact</a>
-    </div>
-  )
+        <Rightbar following={props.following}/>
+      </div>
+    ) 
+  }
 }
 
 export default MobileSidebar

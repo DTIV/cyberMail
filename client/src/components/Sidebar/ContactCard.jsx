@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from "react";
-
+import "./sidebar.css"
 // TODO: Add email and address to clipboard dynamically
 
 const ContactCard = (props) => {
@@ -46,19 +46,31 @@ const ContactCard = (props) => {
         <div className='friend-card'>
             <button className="main-card" onClick={showContact}>
                 <div className='img-wrap'>
-                    <img className='friend-img' src="https://source.unsplash.com/random/?face" alt="" />
+                    {
+                        props.data.avatar ?
+                        <img className='friend-img' src={props.data.avatar} alt="" />
+                        :
+                        <img className='friend-img' src="https://source.unsplash.com/random/?face" alt="" />
+                    }  
                 </div>
                 <div>
-                    John Doe
+                    {
+                        props.data.domain ?
+                        props.data.domain
+                        : props.data.address.slice(0,2)+"..."+props.data.address.slice(38,43)
+                        
+                    }
                 </div>
             </button>
             <div id={props.id} className="contact">
+                
                 <div className='contact-card'>
+                   
                     <div className='contact-btn-wrap'>
-                       <input className='contact-btn' type="button" value={addressBtn} onClick={addressCopied}/>
+                        <input className='c-btn' type="button" value={addressBtn} onClick={addressCopied}/>
                     </div>
                     <div className='contact-btn-wrap'>
-                        <input className='contact-btn' type="button" value={emailBtn} onClick={emailCopied}/>
+                        <input className='c-btn' type="button" value={emailBtn} onClick={emailCopied}/>
                     </div>
                 </div>
             </div>

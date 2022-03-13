@@ -10,6 +10,7 @@
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 60px;
+  
 }
 .mobile-right-sidenav {
   height: 100%;
@@ -42,6 +43,7 @@
   right: 25px;
   font-size: 36px;
   margin-left: 50px;
+  cursor: pointer;
 }
 
 @media screen and (max-height: 450px) {
@@ -119,8 +121,7 @@
   grid-gap: 0.5rem;
 }
 
-.contact-btn{
-  height: 0;
+.c-btn,.contact-widget-btn, .ham-btn{
   padding: 0.5rem;
   width: 100%;
   height: 100%;
@@ -143,7 +144,66 @@
   width: 90%;
 }
 
+.side-widget{
+  
+  background-color: white;
+}
+
+.right-widget{
+  /* display: none; */
+  padding-right: 1rem;
+  padding-left: 0.5rem;
+  transition: all 1s ease;
+  border-left: black solid 1px;
+}
+
+.widge-bg-left, .widge-bg-right{
+  visibility: hidden;
+  border-top: black solid 1px;
+  border-bottom: black solid 1px;
+  background-color: grey;
+}
+
+.right-widget:hover{
+  /* border-bottom-left-radius: 2em; */
+  border-top-left-radius: 2rem;
+}
+
+.left-widget{
+  /* display: none; */
+  border-right: black solid 1px;
+  padding-left: 1rem;
+  padding-right: 0.5rem;
+  transition: all 1s ease;
+  
+}
+.rightbar-wrap{
+  padding: 1rem;
+}
+
+.left-widget:hover{
+  /* border-bottom-left-radius: 2em; */
+  border-top-right-radius: 2rem;
+}
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
+
+}
+
+@media screen and (max-width: 750px) {
+  .widge-bg-left{
+    visibility: visible;
+  }
+  
+  .email-from{
+    display: none;
+  }
+  
+}
+
+@media screen and (max-width: 1750px) {  
+  .widge-bg-right{
+    visibility: visible;
+  }
 }

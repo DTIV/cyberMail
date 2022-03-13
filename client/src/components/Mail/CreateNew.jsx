@@ -3,6 +3,7 @@ import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { useState } from 'react';
 import "./mail.css"
+import Topbar from '../Sidebar/Topbar';
 
 const CreateNew = () => {
     const [blog, setBlog] = useState("")
@@ -13,32 +14,35 @@ const CreateNew = () => {
     }
 
     return (
-        <div className="create-mail-wrap">
-            <div className='mail-input-wrap'>
-                <div>
-                    <input className='mail-input' type="text" placeholder='Address'/>
+        <div>
+            <div className="create-mail-wrap">
+                <div className='mail-input-wrap'>
+                    <div>
+                        <input className='mail-input' type="text" placeholder='Address'/>
+                    </div>
+                    <div>
+                        <input className='mail-input' type="text" placeholder='Email'/>
+                    </div>
+                    <div>
+                        <input className='mail-input' type="text" placeholder='Subject'/>
+                    </div>
+                </div>
+                
+                <div  className='editor-wrap'>
+                    <CKEditor
+                        className='ckedit'
+                        editor={ ClassicEditor }
+                        data=""
+                        onChange = {handleOnChange}
+                        
+                    />
                 </div>
                 <div>
-                    <input className='mail-input' type="text" placeholder='Email'/>
+                    <input className='mail-submit mail-input' type="submit" value="Send"/>
                 </div>
-                <div>
-                    <input className='mail-input' type="text" placeholder='Subject'/>
-                </div>
-            </div>
-            
-            <div  className='editor-wrap'>
-                <CKEditor
-                    className='ckedit'
-                    editor={ ClassicEditor }
-                    data=""
-                    onChange = {handleOnChange}
-                    
-                />
-            </div>
-            <div>
-                <input className='mail-submit mail-input' type="submit" value="Send"/>
             </div>
         </div>
+        
     );
 }
 

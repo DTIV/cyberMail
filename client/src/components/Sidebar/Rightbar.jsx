@@ -1,22 +1,32 @@
 import React from 'react'
 import ContactCard from './ContactCard'
+import { useState, useEffect } from 'react';
 
-const Rightbar = () => {
-    
-    const lists = [1,2,3]
+const Rightbar = (props) => {
+    const [data, setData] = useState("")
+    const lists=[1,2,3,4,5]
 
-    
+    useEffect(() => {
+        if(props.following){
+            setData(props.following.identity.followings.list)
+        }
+    }, [props.following])
 
     return (
         <div className='rightbar-wrap'>
             <div className='friend-search-wrap'>
-                <input className='friend-search' type="text" placeholder='Search Friends'/>
+                <input className='friend-search' type="text" placeholder='Search Address'/>
             </div>
             <div className='friends-list'>
+                <div>
+                    Online
+                </div>
                 {
-                    lists.map((e)=>(
-                        <ContactCard key={e} id={e}/>
+                    data ?
+                    data.map((e)=>(
+                        <ContactCard key={e.address} id={e.address} data={e}/>
                     ))
+                    :<></>
                 }
             </div>
         </div>
