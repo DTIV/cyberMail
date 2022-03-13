@@ -2,7 +2,6 @@ import MobileSidebar from '../Sidebar/MobileSidebar';
 import { GrContactInfo } from "react-icons/gr";
 import { GiHamburgerMenu } from "react-icons/gi";
 import "../Sidebar/sidebar.css"
-
 import { useState, useEffect } from "react";
 import { jsUpdateSize } from '../../functions';
 

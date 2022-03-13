@@ -14,13 +14,17 @@ const ContactCard = (props) => {
     }, [props.id])
       
     const showContact = () => {
+        
         if(getID){
             var elem = document.getElementById(`${getID}`)
+            
             if(showContactInfo){
+                
                 elem.style.height = "0";
                 setShowContact(false)
             }else{
                 elem.style.height = "50px";
+                console.log(elem)
                 setShowContact(true)
             }
         }
@@ -63,7 +67,6 @@ const ContactCard = (props) => {
                 </div>
             </button>
             <div id={props.id} className="contact">
-                
                 <div className='contact-card'>
                    
                     <div className='contact-btn-wrap'>

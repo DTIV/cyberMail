@@ -2,9 +2,9 @@ const mongoose = require("mongoose");
 
 
 const MailSchema = new mongoose.Schema({
-    userId:{
+    userAddress:{
         type:String,
-        required: true
+        required:true
     },
     fromAddress:{
         type:String,
@@ -20,9 +20,9 @@ const MailSchema = new mongoose.Schema({
     },
     mail:{
         type:String,
-        required: false
+        required: true
     }
 },{ timestamps: true }
 )
 
-module.exports = mongoose.model("User", UserSchema)
+module.exports = mongoose.model("Mail", MailSchema)

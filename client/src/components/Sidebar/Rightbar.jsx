@@ -19,12 +19,12 @@ const Rightbar = (props) => {
             </div>
             <div className='friends-list'>
                 <div>
-                    Online
+                    Following
                 </div>
                 {
                     data ?
                     data.map((e)=>(
-                        <ContactCard key={e.address} id={e.address} data={e}/>
+                        <ContactCard key={e.address} id={props.size+"_"+e.address} data={e}/>
                     ))
                     :<></>
                 }

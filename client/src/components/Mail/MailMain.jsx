@@ -9,12 +9,17 @@ import Inbox from './Inbox'
 import Sent from './Sent'
 import Settings from './Settings'
 import "./mail.css"
+import "../Sidebar/sidebar.css"
 import {
     useQuery,
   } from "@apollo/client";
 import { useState, useEffect } from 'react';
 import {GET_FOLLOWINGS} from "../../query"
 import Topbar from '../Sidebar/Topbar'
+
+
+
+
 const MailMain = (props) => {
     const address = "0x4207d42924019903c6161e5cdb7dee31fe6a5d03"
     const [preCursor, setPreCursor] = useState(0)
@@ -45,7 +50,7 @@ const MailMain = (props) => {
                     </Routes>
                 </div>
                 <div className="main-sec right-sidebar">
-                  <Rightbar following={data}/>
+                  <Rightbar following={data} size={"full"}/>
                 </div>
               </div>
           )
