@@ -7,24 +7,28 @@
 }
 
 :root{
-  ---bg-txt-col: #121212;
+  ---bg-txt-col: #fff;
   ---bg-col: #fff;
-  ---brdr-col: #121212;
-  --primary-color: #005fff;
-  --primary-color-alpha: #005fff1a;
----brad: 0.5em;
----up-col: lime;
----down-col: red;
----el1-col: #1d1d1d;
----el2-col: #212121;
----editor-height: 1000px;
----large-title: 2.5rem;
+  ---brdr-col: #fff;
+  ---brad: 0.5em;
+  ---up-col: lime;
+  ---down-col: red;
+  ---el1-col: #121212;
+  ---el2-col: #1d1d1d;
+  ---el3-col: #212121;
+  ---el4-col: #242424;
+  ---el5-col:#272727;
+  ---el6-col:#2d2d2d;
+  ---el10-col:#373737;
+  ---editor-height: 1000px;
+  ---large-title: 2.5rem;
 }
 
 html, body {
   height: 100vh;
+  background-color: var(---el1-col);
+  color: var(---bg-col);
 }
-
 
 .full-height {
   height: 100%;
@@ -50,7 +54,7 @@ body{
 
 .main{
   display: grid;
-  grid-template-columns: 0.3fr 1fr 0.4fr;
+  grid-template-columns: 0.3fr 1fr 0.3fr;
   height: 90vh;
 }
 

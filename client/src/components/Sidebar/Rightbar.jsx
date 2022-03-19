@@ -1,7 +1,8 @@
 import React from 'react'
 import ContactCard from './ContactCard'
 import { useState, useEffect } from 'react';
-
+import Search from './Search';
+import Feature from './Feature';
 const Rightbar = (props) => {
     const [data, setData] = useState("")
     const lists=[1,2,3,4,5]
@@ -14,19 +15,22 @@ const Rightbar = (props) => {
 
     return (
         <div className='rightbar-wrap'>
-            <div className='friend-search-wrap'>
-                <input className='friend-search' type="text" placeholder='Search Address'/>
-            </div>
+            <Search />
             <div className='friends-list'>
                 <div>
                     Following
                 </div>
                 {
-                    data ?
-                    data.map((e)=>(
-                        <ContactCard key={e.address} id={props.size+"_"+e.address} data={e}/>
-                    ))
-                    :<></>
+                    data.length > 0 ?
+                        data.map((e)=>(
+                            <ContactCard key={e.address} id={props.size+"_"+e.address} data={e}/>
+                        ))
+
+                    :
+                    <div>
+                        No Contacts Yet.
+                        <Feature />
+                    </div>
                 }
             </div>
         </div>

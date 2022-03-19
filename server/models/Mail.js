@@ -21,6 +21,11 @@ const MailSchema = new mongoose.Schema({
     mail:{
         type:String,
         required: true
+    },
+    flagged:{
+        type:Boolean,
+        required: false,
+        default: false
     }
 },{ timestamps: true }
 )

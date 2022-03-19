@@ -4,9 +4,11 @@ const mongoose = require("mongoose")
 const dotenv = require("dotenv")
 const helmet = require("helmet")
 const morgan = require("morgan")
-const userRoute = require("./routes/users")
+const blockRoute = require("./routes/block")
 const authRoute = require("./routes/auth")
 const mailRoute = require("./routes/mail")
+var bodyParser = require('body-parser')
+const jsonParser = bodyParser.json();
 
 dotenv.config();
 
@@ -15,14 +17,17 @@ mongoose.connect(process.env.MONGO_URL,{ useNewUrlParser: true, useUnifiedTopolo
     console.log("Connected to MongoDB")
 })
 // Change
+
 // middleware
 app.use(express.json())
 app.use(helmet())
 app.use(morgan("common"))
+app.use(jsonParser)
+app.use(bodyParser.urlencoded({extended: true}));
 
 // routes
 
-app.use("/api/users", userRoute)
+app.use("/api/block", blockRoute)
 app.use("/api/auth", authRoute)
 app.use("/api/mail", mailRoute)
 

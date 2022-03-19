@@ -1,16 +1,9 @@
 const router = require("express").Router();
-const User = require("../models/User");
+const User = require("../models/BlockUser");
 const Mail = require("../models/Mail");
 const bcrypt = require("bcrypt");
 const { request } = require("express");
 const { deleteOne } = require("../models/Mail");
-
-
-//get all from sender address
-
-
-
-//get all to address
 
 //create mail
 router.post("/", async (req, res) => {
@@ -48,14 +41,37 @@ router.get("/:id", async (req,res) => {
     }
 })
 
-
 //get all mail
-router.get("/user/all", async (req,res) =>{
-    let mailArray = [];
+router.get("/all/:userAddress", async (req,res) =>{
     try{
-        const currentUser = req.body.userAddress
+        const currentUser = req.params.userAddress
         const userMail = await Mail.find({userAddress: currentUser})
         res.status(200).json(userMail)
+    }catch(err){
+        res.status(500).json(err)
+    }
+})
+
+// flag mail
+router.put("/flag/:id", async (req,res) => {
+    
+    try{
+        const mail = await Mail.findById(req.params.id);
+        
+        let flag;
+        if(mail.flagged){
+            flag = false;
+        }else{
+            flag = true;
+        }
+        console.log(req.body)
+        if(mail.userAddress === req.body.userAddress){
+            await mail.updateOne({ flagged: flag})
+            res.status(200).json(flag);
+        }else{
+            res.status(403).json("Not your account");
+        }
+        
     }catch(err){
         res.status(500).json(err)
     }

@@ -1,7 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from "react";
 import "./sidebar.css"
-// TODO: Add email and address to clipboard dynamically
 
 const ContactCard = (props) => {
     const [showContactInfo, setShowContact] = useState(false);
@@ -14,35 +13,31 @@ const ContactCard = (props) => {
     }, [props.id])
       
     const showContact = () => {
-        
-        if(getID){
+        if(getID){   
             var elem = document.getElementById(`${getID}`)
-            
             if(showContactInfo){
-                
                 elem.style.height = "0";
                 setShowContact(false)
             }else{
                 elem.style.height = "50px";
-                console.log(elem)
                 setShowContact(true)
             }
         }
     }
     
     const emailCopied = () =>{
-        navigator.clipboard.writeText("EMAIL COPIED!");
+        navigator.clipboard.writeText("EMAIL COPIED");
         setEmailBtn("Copied!")
         setTimeout(() => {
-            setEmailBtn("Email")
+            setEmailBtn("Email");
         }, 1000);
     }
 
     const addressCopied = () => {
-        navigator.clipboard.writeText("ADDRESS COPIED!");
+        navigator.clipboard.writeText(props.data.address);
         setAddressBtn("Copied!")
         setTimeout(() => {
-            setAddressBtn("Address")
+            setAddressBtn("Address");
         }, 1000);
     }
 
@@ -54,21 +49,19 @@ const ContactCard = (props) => {
                         props.data.avatar ?
                         <img className='friend-img' src={props.data.avatar} alt="" />
                         :
-                        <img className='friend-img' src="https://source.unsplash.com/random/?face" alt="" />
+                        <img className='friend-img' src={`https://source.unsplash.com/random/?face`} alt="" />
                     }  
                 </div>
                 <div>
                     {
                         props.data.domain ?
                         props.data.domain
-                        : props.data.address.slice(0,2)+"..."+props.data.address.slice(38,43)
-                        
+                        : props.data.address.slice(0,2)+"..."+props.data.address.slice(38,43)  
                     }
                 </div>
             </button>
             <div id={props.id} className="contact">
                 <div className='contact-card'>
-                   
                     <div className='contact-btn-wrap'>
                         <input className='c-btn' type="button" value={addressBtn} onClick={addressCopied}/>
                     </div>

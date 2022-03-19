@@ -5,7 +5,6 @@ import Rightbar from '../Sidebar/Rightbar'
 import Showcase from '../Showcase/Showcase'
 import { Routes,Router, Route, Link } from "react-router-dom";
 import CreateNew from './CreateNew'
-import Inbox from './Inbox'
 import Sent from './Sent'
 import Settings from './Settings'
 import "./mail.css"
@@ -16,36 +15,60 @@ import {
 import { useState, useEffect } from 'react';
 import {GET_FOLLOWINGS} from "../../query"
 import Topbar from '../Sidebar/Topbar'
-
-
+import axios from 'axios'
+import Message from './Message'
 
 
 const MailMain = (props) => {
-    const address = "0x4207d42924019903c6161e5cdb7dee31fe6a5d03"
+
     const [preCursor, setPreCursor] = useState(0)
     const [cursor, setCursor] = useState(20)
     const [following, setFollowing] = useState("")
-
-    const { loading, error, data } = useQuery(GET_FOLLOWINGS, { variables : { "Address":address, "After": cursor.toString()}});
-
+    const [allMessages, setAllMessages] = useState([])
+    const [getInbox, setInbox] = useState([])
+    const [getSent, setSent] = useState([])
+    const address = "0x843D3cdA1c695A5E9F38A5f4ecA145581f70DDAb"
+    const user = props.user
+    const { loading, error, data } = useQuery(GET_FOLLOWINGS, { variables : { "Address":user, "After": cursor.toString()}});
+    
     useEffect(() => {
         setFollowing(data)
     }, [data])
-    
+
+    useEffect(() => {
+        const getData = async () => {
+            if(user){
+                const res = await axios.get(`mail/all/${user}`)
+                if(res.status === 200){
+                    const messages = res.data
+                    const sent = messages.filter((e) => {
+                        return(e.fromAddress === user) 
+                    })
+                    const inbox = messages.filter((e) => {
+                        return(e.toAddress === user) 
+                    })
+                    setSent(sent)
+                    setInbox(inbox)
+                }
+            }
+        }
+        getData()
+    }, [user])
+
     if(props.connected){
         return (
             <div className="main">
                 <div className="main-sec left-sidebar">
-                  <MenuSidebar />
+                  <MenuSidebar inboxAmount={getInbox.length} sentAmount={getSent.length}/>
                 </div>
                 
                 <div className="main-sec center-main">
                     <Topbar following={data}/>
                     <Routes>
-                        <Route exact path="/" element={<MailList />}/>
-                        <Route exact path="/new" element={<CreateNew />}/>
-                        <Route exact path="/inbox" element={<Inbox />}/>
-                        <Route exact path="/sent" element={<Sent />}/>
+                        <Route exact path="/message/:id" element={<Message/>}/>
+                        <Route exact path="/" element={<MailList inbox={getInbox} user={user}/>}/>
+                        <Route exact path="/new" element={<CreateNew user={props.user}/>}/>
+                        <Route exact path="/sent" element={<Sent sent={getSent}/>}/>
                         <Route exact path="/settings" element={<Settings />}/>
                     </Routes>
                 </div>

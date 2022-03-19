@@ -98,7 +98,7 @@ function App() {
       console.log(err)
     }
   }
-  
+
   return (
     <div className="App">
       <Header 
@@ -111,7 +111,8 @@ function App() {
         <Route exact path="*" element={
           <MailMain 
             connected={connected} 
-            connect={Connect} />}/>
+            connect={Connect}
+            user={getCurrentAccount}/>}/>
       </Routes>
     </div>
     
