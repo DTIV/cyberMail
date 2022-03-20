@@ -7,11 +7,14 @@ const Sent = (props) => {
 
     return (
       <div>
-        <div>Sent</div>
+        <div className="lrg-title">Sent</div>
         {
-          sent.map((e) => (
-            <MailCard key={`sent_${e._id}`} data={e}/>
-          ))
+          sent ?
+            sent.map((e) => (
+              <MailCard key={`sent_${e._id}`} data={e}/>
+            ))
+          :
+          <div className='md-title'>No Messages.</div>
         }
       </div>
     )

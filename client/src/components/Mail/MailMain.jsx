@@ -6,7 +6,7 @@ import Showcase from '../Showcase/Showcase'
 import { Routes,Router, Route, Link } from "react-router-dom";
 import CreateNew from './CreateNew'
 import Sent from './Sent'
-import Settings from './Settings'
+import Settings from '../Settings/Settings'
 import "./mail.css"
 import "../Sidebar/sidebar.css"
 import {
@@ -17,7 +17,7 @@ import {GET_FOLLOWINGS} from "../../query"
 import Topbar from '../Sidebar/Topbar'
 import axios from 'axios'
 import Message from './Message'
-
+import Drafts from './Drafts/Drafts'
 
 const MailMain = (props) => {
 
@@ -54,7 +54,7 @@ const MailMain = (props) => {
         }
         getData()
     }, [user])
-
+    
     if(props.connected){
         return (
             <div className="main">
@@ -69,7 +69,8 @@ const MailMain = (props) => {
                         <Route exact path="/" element={<MailList inbox={getInbox} user={user}/>}/>
                         <Route exact path="/new" element={<CreateNew user={props.user}/>}/>
                         <Route exact path="/sent" element={<Sent sent={getSent}/>}/>
-                        <Route exact path="/settings" element={<Settings />}/>
+                        <Route exact path="/settings" element={<Settings user={props.user}/>}/>
+                        <Route exact path="/drafts" element={<Drafts user={props.user}/>}/>
                     </Routes>
                 </div>
                 <div className="main-sec right-sidebar">

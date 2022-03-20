@@ -66,26 +66,29 @@
     margin: auto;
 }
 
-.mail-wrap{
+.mail-wrap, .blockcart-wrap{
     padding: 0.2rem 1rem;
     
 }
-.mail-card{
+.mail-card, .blockcard{
     border: solid var(---el10-col) 1px;
     background-color: var(---el4-col);
     color: var(---bg-txt-col);
     display: flex;
-    /* justify-content: space-evenly; */
     align-items: center;
     padding: 0.5rem;
     transition: all 1s ease;
 }
 
+.blockcard{
+    justify-content: space-between;
+}
 .mail-card:hover{
     box-shadow: 0 0 0.5em 0 rgba(255, 255, 255, 0.63);
 }
 
 .mail-check, .mail-del{
+    display: flex;
     background: inherit!important;
     border: none;
 }
@@ -93,6 +96,18 @@
 .mail-icon{
     width: 20px;
     height: 20px;
+    color: var(---bg-txt-col);
+    cursor: pointer;
+}
+.block-icon2{
+    width: 30px;
+    height: 30px;
+    color: var(---bg-txt-col);
+    cursor: pointer;
+}
+.block-icon{
+    width: 30px;
+    height: 30px;
     color: var(---bg-txt-col);
     cursor: pointer;
 }

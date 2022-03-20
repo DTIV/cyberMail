@@ -3,25 +3,27 @@ const BlockUser = require("../models/BlockUser");
 const { request } = require("express");
 
 //block user
-router.post("/:userAddress/:id", async (req, res) => {
+router.post("/:id", async (req, res) => {
     try{
-        console.log(req.params.id)
         const check = await BlockUser.find({blockAddress : req.params.id})
         if(check.length < 1){
-            if(req.params.userAddress != req.params.id){
+            if(req.body.userAddress != req.params.id){
                 const blockUser = await new BlockUser({
-                    userAddress: req.params.userAddress,
                     blockAddress: req.params.id,
+                    address: req.body.address,
                 })
                 await blockUser.save()
-                res.status(200).json(`User ${req.params.userAddress} blocked ${req.params.id}`);
+                res.status(200).json(`User ${req.body.address} blocked ${req.params.id}`);
             }else{
+                console.log("cannot block yourself")
                 res.status(403).json("cannot block yourself")
             }
         }else{
+            console.log("user already blocked")
             res.status(403).json("user already blocked")
         }
     }catch(err){
+        console.log("ERR",err)
         res.status(500).json(err)
     }
 })
@@ -40,10 +42,10 @@ router.get("/all/:userAddress", async (req,res) =>{
 //delete blocked user
 router.delete("/:id", async (req,res) => {
     try{
-        const mail = await Mail.findById(req.params.id);
+        const mail = await BlockUser.findOne({userAddress: req.body.userAddress, blockAddress: req.params.id});
         if(mail.userAddress === req.body.userAddress){
             await mail.deleteOne();
-            res.status(200).json("message deleted")
+            res.status(200).json(false)
         }else{
             res.status(401).json("You can only delete emails you sent")
         }

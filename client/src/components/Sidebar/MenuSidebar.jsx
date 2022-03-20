@@ -20,7 +20,7 @@ const MenuSidebar = (props) => {
             <div className='box green'><small>{props.sentAmount}</small></div>
           </div>
         </Link>
-        <Link to="/sent">
+        <Link to="/drafts">
           <div className='menu-btn'>
             <div>Drafts</div>
             <div className='box red'><small>0</small></div>

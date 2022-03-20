@@ -2,17 +2,16 @@ const mongoose = require("mongoose");
 
 
 const BlockUserSchema = new mongoose.Schema({
-    userAddress:{
-        type:String,
-        required: true,
-        max:64,
-        unique:true
-    },
     blockAddress:{
         type:String, 
         required: true,
         max:64,
         unique:true
+    },
+    address:{
+        type:String,
+        required: true,
+        max:64
     },
 },{ timestamps: true }
 )

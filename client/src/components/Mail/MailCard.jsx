@@ -3,26 +3,35 @@ import "../Sidebar/sidebar.css"
 import "../../mobile.css"
 import { FaTrash } from "react-icons/fa";
 import { Link } from 'react-router-dom'
-import { BsFlagFill } from "react-icons/bs";
-import { BsFlag } from "react-icons/bs";
+import { BsFlagFill, BsFlag } from "react-icons/bs";
+import BlockIcon from '../Icons/BlockIcon';
 import axios from 'axios'
 import { useState, useEffect } from 'react';
-
-const headers = {
-    'Content-Type': 'application/x-www-form-urlencoded',
-} 
 
 const MailCard = (props) => {
     const data = props.data;
     const user = props.user;
+    const blocked = props.blocked
 
-    const [getResp, setResp] = useState(data.flagged)
+    const [getFlag, setFlag] = useState(data.flagged)
+    const [block, setBlock] = useState(false)
 
+    useEffect(() => {
+        if(blocked){
+            const b = blocked.filter((e)=>{
+                return data.fromAddress === e.blockAddress
+            })
+            if(b.length > 0){
+                setBlock(true)
+            }
+        }
+    }, [blocked])
+    
     const flagMail = async () => {
         try{
             const res = await axios.put(`/mail/flag/${data._id}`,{"userAddress": user})
             if(res){
-                setResp(res.data)
+                setFlag(res.data)
             }
         }catch(err){
             console.log(err)
@@ -32,6 +41,31 @@ const MailCard = (props) => {
     const deleteMail = async () => {
         try{
             await axios.delete(`/mail/${data._id}`,{data:{"userAddress": user}})
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+    const blockUser = async () => {
+        try{
+            console.log(data.fromAddress)
+            const res = await axios.post(`/block/${data.fromAddress}`,{"address": user})
+            console.log("user blocked")
+            if(res){
+                setBlock(true)
+            }
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+    const unBlockUser = async () => {
+        try{
+            const res = await axios.delete(`/block/${data.fromAddress}`,{data:{"address": user}})
+            console.log("user unblocked")
+            if(res){
+                setBlock(false)
+            }
         }catch(err){
             console.log(err)
         }
@@ -66,9 +100,12 @@ const MailCard = (props) => {
                         </div>
                     </Link>
                     <div className='data-tb'>
-                        
+                        <BlockIcon 
+                            block={block} 
+                            unBlock={unBlockUser}
+                            blockUser={blockUser}/>
                         {
-                            getResp ?
+                            getFlag ?
                             <button className='mail-del' onClick={flagMail}><BsFlagFill className='mail-icon' /></button>
                             :<button className='mail-del' onClick={flagMail}><BsFlag className='mail-icon'/></button> 
                         }
