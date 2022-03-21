@@ -17,23 +17,30 @@ import {GET_FOLLOWINGS} from "../../query"
 import Topbar from '../Sidebar/Topbar'
 import axios from 'axios'
 import Message from './Message'
-import Drafts from './Drafts/Drafts'
+import Drafts from '../Drafts/Drafts'
 
 const MailMain = (props) => {
 
-    const [preCursor, setPreCursor] = useState(0)
     const [cursor, setCursor] = useState(20)
     const [following, setFollowing] = useState("")
-    const [allMessages, setAllMessages] = useState([])
     const [getInbox, setInbox] = useState([])
     const [getSent, setSent] = useState([])
-    const address = "0x843D3cdA1c695A5E9F38A5f4ecA145581f70DDAb"
+    const [update, setUpdate] = useState(false)
+
     const user = props.user
     const { loading, error, data } = useQuery(GET_FOLLOWINGS, { variables : { "Address":user, "After": cursor.toString()}});
     
     useEffect(() => {
         setFollowing(data)
     }, [data])
+
+    const updateList = async () => {
+        if(update){
+            setUpdate(false)
+        }else{
+            setUpdate(true)
+        }
+    }
 
     useEffect(() => {
         const getData = async () => {
@@ -53,7 +60,7 @@ const MailMain = (props) => {
             }
         }
         getData()
-    }, [user])
+    }, [user, update])
     
     if(props.connected){
         return (
@@ -66,9 +73,9 @@ const MailMain = (props) => {
                     <Topbar following={data}/>
                     <Routes>
                         <Route exact path="/message/:id" element={<Message/>}/>
-                        <Route exact path="/" element={<MailList inbox={getInbox} user={user}/>}/>
+                        <Route exact path="/" element={<MailList inbox={getInbox} user={user} updateList={updateList}/>}/>
                         <Route exact path="/new" element={<CreateNew user={props.user}/>}/>
-                        <Route exact path="/sent" element={<Sent sent={getSent}/>}/>
+                        <Route exact path="/sent" element={<Sent sent={getSent} user={props.user} updateList={updateList}/>}/>
                         <Route exact path="/settings" element={<Settings user={props.user}/>}/>
                         <Route exact path="/drafts" element={<Drafts user={props.user}/>}/>
                     </Routes>

@@ -5,15 +5,17 @@ const { request } = require("express");
 //block user
 router.post("/:id", async (req, res) => {
     try{
+        // NEED TO ADD USER ADDDRESS TO CHECK!!!
         const check = await BlockUser.find({blockAddress : req.params.id})
+        console.log("check", check)
         if(check.length < 1){
             if(req.body.userAddress != req.params.id){
                 const blockUser = await new BlockUser({
                     blockAddress: req.params.id,
-                    address: req.body.address,
+                    userAddress: req.body.userAddress,
                 })
                 await blockUser.save()
-                res.status(200).json(`User ${req.body.address} blocked ${req.params.id}`);
+                res.status(200).json(`User ${req.body.userAddress} blocked ${req.params.id}`);
             }else{
                 console.log("cannot block yourself")
                 res.status(403).json("cannot block yourself")

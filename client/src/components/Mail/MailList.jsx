@@ -37,7 +37,7 @@ const MailList = (props) => {
         {
           inbox.length > 0 ?
             inbox.map((e) => (
-              <MailCard key={e._id} data={e} user={user} blocked={getBlock}/>
+              <MailCard key={e._id} data={e} user={user} blocked={getBlock} updateList={props.updateList}/>
             ))
           :
           <div className='md-title'>No Messages.</div>

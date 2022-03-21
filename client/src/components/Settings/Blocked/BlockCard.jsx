@@ -42,9 +42,9 @@ const BlockCard = (props) => {
                 <div className='block-sec'>
                     {
                         block ?
-                        <button className='mail-del'><CgBlock className='block-icon'/></button> 
+                        <button className='mail-del'><CgBlock className='block-icon red-txt'/></button> 
                         :
-                        <button className='mail-del' onClick={unBlockUser}><CgUnblock className='block-icon2' /></button>
+                        <button className='mail-del' onClick={unBlockUser}><CgUnblock className='block-icon2 green-txt' /></button>
                     }
                     
                 </div>

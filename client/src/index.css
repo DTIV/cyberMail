@@ -10,9 +10,11 @@
   ---bg-txt-col: #fff;
   ---bg-col: #fff;
   ---brdr-col: #fff;
+  ---sec-txt:rgba(224, 224, 224, 0.603);
   ---brad: 0.5em;
-  ---up-col: lime;
-  ---down-col: red;
+  ---green: lime;
+  ---red: crimson;
+  ---flag-on: #b98d0f;
   ---el1-col: #121212;
   ---el2-col: #1d1d1d;
   ---el3-col: #212121;
@@ -31,6 +33,21 @@ html, body {
   color: var(---bg-col);
 }
 
+.blk-icon{
+  transition: all 0.5s ease;
+}
+.blk-icon:hover{
+  color:var(---red)!important;
+}
+
+.flag-col:hover{
+  color:var(---flag-on)!important;
+}
+
+.trash-icon:hover{
+  color: var(---bg-col)!important;
+}
+
 .full-height {
   height: 100%;
 }
@@ -38,6 +55,28 @@ html, body {
 a{
   text-decoration: none;
   color: black;
+}
+
+.sec-txt{
+  color: var(---sec-txt)!important;
+}
+.green{
+  background-color: var(---green);
+}
+.red{
+  background-color: var(---red);
+}
+
+.green-txt{
+  color: var(---green)!important;
+}
+
+.red-txt {
+  color: var(---red)!important;
+}
+
+.flag-on{
+  color:var(---flag-on)!important;
 }
 
 .lrg-title{

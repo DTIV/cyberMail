@@ -4,15 +4,22 @@ const Mail = require("../models/Mail");
 const bcrypt = require("bcrypt");
 const { request } = require("express");
 const { deleteOne } = require("../models/Mail");
+const BlockUser = require("../models/BlockUser");
 
 //create mail
 router.post("/", async (req, res) => {
-    const newMail = new Mail(req.body)
-    try{
-        const savedPost = await newMail.save();
-        res.status(200).json(savedPost)
-    }catch(err){
-        res.status(500).json(err)
+    const toAddress = req.body.toAddress
+    const isBlocked = await BlockUser.findOne({userAddress: toAddress, blockAddress: req.body.userAddress})
+    if(!isBlocked){
+        const newMail = new Mail(req.body)
+        try{
+            const savedPost = await newMail.save();
+            res.status(200).json(savedPost)
+        }catch(err){
+            res.status(500).json(err)
+        }
+    }else{
+        res.status(403).json("User has blocked you!")
     }
 })
 

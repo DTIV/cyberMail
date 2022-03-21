@@ -141,13 +141,6 @@
   align-items: center;
 }
 
-.green{
-  background-color: lime;
-}
-
-.red{
-  background-color: crimson;
-}
 
 .box{
   display: flex;

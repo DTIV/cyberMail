@@ -83,14 +83,18 @@
 .blockcard{
     justify-content: space-between;
 }
-.mail-card:hover{
+.mail-card:hover, .blockcard:hover{
     box-shadow: 0 0 0.5em 0 rgba(255, 255, 255, 0.63);
 }
 
-.mail-check, .mail-del{
+.mail-check, 
+.mail-del, 
+.mail-flag, 
+.block-btn{
     display: flex;
     background: inherit!important;
     border: none;
+    
 }
 
 .mail-icon{
@@ -98,6 +102,7 @@
     height: 20px;
     color: var(---bg-txt-col);
     cursor: pointer;
+    transition: all 0.5s ease;
 }
 .block-icon2{
     width: 30px;

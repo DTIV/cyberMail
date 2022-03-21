@@ -11,7 +11,8 @@ import { useState, useEffect } from 'react';
 const MailCard = (props) => {
     const data = props.data;
     const user = props.user;
-    const blocked = props.blocked
+    const blocked = props.blocked;
+    const updateList = props.updateList;
 
     const [getFlag, setFlag] = useState(data.flagged)
     const [block, setBlock] = useState(false)
@@ -41,6 +42,7 @@ const MailCard = (props) => {
     const deleteMail = async () => {
         try{
             await axios.delete(`/mail/${data._id}`,{data:{"userAddress": user}})
+            updateList()
         }catch(err){
             console.log(err)
         }
@@ -49,7 +51,7 @@ const MailCard = (props) => {
     const blockUser = async () => {
         try{
             console.log(data.fromAddress)
-            const res = await axios.post(`/block/${data.fromAddress}`,{"address": user})
+            const res = await axios.post(`/block/${data.fromAddress}`,{"userAddress": user})
             console.log("user blocked")
             if(res){
                 setBlock(true)
@@ -61,7 +63,7 @@ const MailCard = (props) => {
 
     const unBlockUser = async () => {
         try{
-            const res = await axios.delete(`/block/${data.fromAddress}`,{data:{"address": user}})
+            const res = await axios.delete(`/block/${data.fromAddress}`,{data:{"userAddress": user}})
             console.log("user unblocked")
             if(res){
                 setBlock(false)
@@ -100,17 +102,25 @@ const MailCard = (props) => {
                         </div>
                     </Link>
                     <div className='data-tb'>
-                        <BlockIcon 
+                        {
+                            props.sent ?
+                            <></>
+                            :
+                            <BlockIcon 
                             block={block} 
                             unBlock={unBlockUser}
                             blockUser={blockUser}/>
-                        {
-                            getFlag ?
-                            <button className='mail-del' onClick={flagMail}><BsFlagFill className='mail-icon' /></button>
-                            :<button className='mail-del' onClick={flagMail}><BsFlag className='mail-icon'/></button> 
                         }
-                        <button className='mail-del' onClick={deleteMail}><FaTrash className='mail-icon'/></button>
                         
+                        {
+                            props.sent ? 
+                            <></>
+                            :
+                            getFlag ?
+                            <button className='mail-flag ' onClick={flagMail}><BsFlagFill className='mail-icon flag-on flag-col' /></button>
+                            :<button className='mail-flag green-txt' onClick={flagMail}><BsFlag className='mail-icon sec-txt flag-col'/></button> 
+                        }
+                        <button className='mail-del' onClick={deleteMail}><FaTrash className='mail-icon trash-icon sec-txt'/></button>
                     </div>
                 </div>
             </div>

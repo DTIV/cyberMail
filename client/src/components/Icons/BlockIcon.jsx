@@ -8,8 +8,8 @@ const BlockIcon = (props) => {
         <div>
             {
                 block ?
-                <button className='mail-del' onClick={props.unBlock}><CgUnblock className='block-icon2' /></button>
-                :<button className='mail-del' onClick={props.blockUser}><CgBlock className='block-icon'/></button> 
+                <button className='block-btn' onClick={props.unBlock}><CgUnblock className='block-icon2 blk-icon sec-txt' /></button>
+                :<button className='block-btn' onClick={props.blockUser}><CgBlock className='block-icon blk-icon sec-txt'/></button> 
             }
         </div>
     )

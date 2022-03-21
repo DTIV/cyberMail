@@ -33,7 +33,6 @@ const Settings = (props) => {
   }, [user, flag])
   
   
-  
   return (
     <div>
       <div className='lrg-title'>Settings</div>
