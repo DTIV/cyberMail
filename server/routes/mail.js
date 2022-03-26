@@ -19,6 +19,7 @@ router.post("/", async (req, res) => {
             res.status(500).json(err)
         }
     }else{
+        console.log("User has blocked you!")
         res.status(403).json("User has blocked you!")
     }
 })

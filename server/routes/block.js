@@ -5,10 +5,8 @@ const { request } = require("express");
 //block user
 router.post("/:id", async (req, res) => {
     try{
-        // NEED TO ADD USER ADDDRESS TO CHECK!!!
-        const check = await BlockUser.find({blockAddress : req.params.id})
-        console.log("check", check)
-        if(check.length < 1){
+        const check = await BlockUser.findOne({blockAddress : req.params.id, userAddress : req.body.userAddress})
+        if(!check){
             if(req.body.userAddress != req.params.id){
                 const blockUser = await new BlockUser({
                     blockAddress: req.params.id,

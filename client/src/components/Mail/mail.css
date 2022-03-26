@@ -7,18 +7,21 @@
 }
 
 .editor-wrap{
-    color: black!important;
+    padding: 1rem;
 }
-.ckedit{
-    color: black!important;
-}
+
 .title{
     color: red;
+}
+
+.quill{
+    height: 400px!important;
 }
 
 .mail-input{
     padding: 0.5rem;
     width: 100%;
+    cursor: pointer;
 }
 
 .mail-list{
@@ -62,7 +65,8 @@
 
 
 .create-mail-wrap{
-    width: var(---editor-height);
+    height: 600px;
+    width: 100%;
     margin: auto;
 }
 

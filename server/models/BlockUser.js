@@ -6,7 +6,6 @@ const BlockUserSchema = new mongoose.Schema({
         type:String, 
         required: true,
         max:64,
-        unique:true
     },
     userAddress:{
         type:String,
