@@ -19,19 +19,34 @@
     height: 400px!important;
 }
 
+.mail-submit{
+    background-color: var(---el6-col)!important;
+    cursor: pointer;
+}
+.mail-submit:hover{
+    background-color: var(---el10-col)!important;
+}
 .mail-submit-wrap{
     margin: 2rem 0;
+    
 }
 .mail-input{
     padding: 0.5rem;
     width: 100%;
-    cursor: pointer;
+    border-radius: var(---brad);
+    background-color: inherit;
+    border: var(---sec-txt) 1px solid;
+    color: var(---bg-txt-col);
 }
 
 .mail-list{
     width: 100%;
 }
-
+.mail-input-wrap{
+    display: grid;
+    
+    grid-gap: 0.2rem;
+}
 .mailtop{
     display: flex;
     justify-content: space-between;

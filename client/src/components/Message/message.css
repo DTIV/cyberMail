@@ -49,3 +49,32 @@
     border-radius: 1em;
     background-color: var(---el10-col);
 }
+
+.twit-wrap{
+    display: flex;
+    align-items: center;
+}
+.twit-btn{
+    display: flex;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #1d9bf0;
+}
+
+@media screen and (max-width: 1750px) {
+
+    .message-card{
+        grid-template-columns: 1fr;
+    }
+
+    .info-inner{
+        display: flex;
+        justify-content: start;
+        gap: 2rem;
+    }
+
+    .social-inner{
+        justify-content: space-evenly;
+    }
+  }
+  

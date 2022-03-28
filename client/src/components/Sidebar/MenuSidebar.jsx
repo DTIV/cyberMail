@@ -11,19 +11,16 @@ const MenuSidebar = (props) => {
         <Link to="/" >
           <div className='menu-btn'>
             <div>Inbox</div>
-            <div className='box green'><small>{props.inboxAmount}</small></div>
           </div>
         </Link>
         <Link to="/sent">
           <div className='menu-btn'>
             <div>Sent</div>
-            <div className='box green'><small>{props.sentAmount}</small></div>
           </div>
         </Link>
         <Link to="/drafts">
           <div className='menu-btn'>
             <div>Drafts</div>
-            <div className='box red'><small>0</small></div>
           </div>
         </Link>
         <Link to="/settings">Settings</Link>

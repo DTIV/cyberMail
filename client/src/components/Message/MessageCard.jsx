@@ -14,9 +14,6 @@ import { useState, useEffect } from 'react';
 const MessageCard = (props) => {
     const msgData = props.data
     
-    
-    
-    console.log(msgData)
     const { loading, error, data } = useQuery(GET_ID_DATA, { variables : { "Address": msgData.fromAddress }});
     if(loading){
         return(
@@ -30,10 +27,11 @@ const MessageCard = (props) => {
         )
 
     }
-    console.log(props.provider)
+    const dt = new Date(data.identity.joinTime)
+    const newDate = dt.toLocaleString('en-US')
     return (
         <div className='message-card'>
-            <div className='top-inner'>
+            <div className='top-inner info-inner'>
                 <div className='from-img'>
                     {
                         data.avatar ?
@@ -43,28 +41,39 @@ const MessageCard = (props) => {
                     }
                 </div>
                 <div className='from-info'>
-                    {msgData.fromAddress}
+                    <div>{msgData.fromAddress}</div>
+                    <div><small>JOINED: {newDate}</small></div>
                 </div>
             </div>
-            <div className='top-inner'>
+            <div className='top-inner social-inner'>
                 <div className='social-wrap'>
                     <div className='social-box'>
                         <div>
                             Followers
                         </div>
                         <div>
-                            10
+                            {data.identity.followerCount}
                         </div>
                     </div>
                     <div className='social-box'>
                         <div>Following</div>
-                        <div>5</div>
+                        <div>{data.identity.followingCount}</div>
                     </div>
-                    <div>
-                        <button>
-                            <FaTwitterSquare />
-                        </button>
-                    </div>
+                    {
+                        data.identity.social.twitter ?
+                        <div className='twit-wrap'>
+                            <a href={`http://www.twitter.com/${data.identity.social.twitter}`} className='twit-btn' target="_blank">
+                                <FaTwitterSquare />
+                            </a>
+                        </div>
+                        :
+                        <div className='twit-wrap'>
+                            <a href={`http://www.twitter.com/`} className='twit-btn' target="_blank">
+                                <FaTwitterSquare />
+                            </a>
+                        </div>
+                    }
+                    
                 </div>
                 <div>
                     {
@@ -84,10 +93,8 @@ const MessageCard = (props) => {
                         />
                         :<></>
                     }
-                    
                 </div>
             </div>
-            
         </div>
     )
 }

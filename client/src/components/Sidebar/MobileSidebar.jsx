@@ -20,6 +20,7 @@ const MobileSidebar = (props) => {
           <Link to="/new">Create</Link>
           <Link to="/">Inbox</Link>
           <Link to="/sent">Sent</Link>
+          <Link to="/drafts">Drafts</Link>
           <Link to="/settings">Settings</Link>
       </div>
     )

@@ -1,0 +1,22 @@
+.btn-wrap{
+    background-color: var(---el6-col);
+    border: 1px solid var(---sec-txt);
+    width: 60%;
+    margin: 2rem auto;
+    text-align: center;
+    color: var(---bg-txt-col);
+    border-radius: var(---brad);
+}
+
+.basic-btn{
+    display: block;
+    padding: 1rem;
+    width: 100%;
+    height: 100%;
+    color: var(---bg-txt-col);
+    transition: all 0.5s ease;
+}
+
+.basic-btn:hover{
+    background-color: var(---el10-col);
+}

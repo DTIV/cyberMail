@@ -6,6 +6,7 @@ import './message.css'
 import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
 import DataButtons from '../Buttons/DataButtons';
 import MessageCard from './MessageCard'
+import BasicButton from '../Buttons/BasicButton';
 
 const Message = (props) => {
   const user = props.user
@@ -13,7 +14,6 @@ const Message = (props) => {
   const msgID = path.replace('/message/',"")
 
   const [msgData, setMsgData] = useState("")
-  const [getFlag, setFlag] = useState()
   const [block, setBlock] = useState(false)
   const [getBlock, setAllBlock] = useState(false)
   const [update, setUpdate] = useState(false)
@@ -25,6 +25,7 @@ const Message = (props) => {
         setUpdate(true)
     }
   }
+  
   let flagged;
   if(msgData.flagged){
     flagged = true;
@@ -60,8 +61,7 @@ const Message = (props) => {
         try{
             const res = await axios.put(`/mail/flag/${msgData._id}`,{"userAddress": user})
             if(res){
-              console.log(res.data)
-                setFlag(res.data)
+              flagged=true
             }
         }catch(err){
             console.log(err)
@@ -115,9 +115,7 @@ const Message = (props) => {
     getData()
   }, [user])
   
-  
   return (
-    
     <div className='main-sec center-main'>
       <Topbar />
       <div className='main-msg'>
@@ -143,7 +141,6 @@ const Message = (props) => {
               </div>
               </div>
             }
-            
           </div>
           <div className='msg-card'>
             <div className='msg-date'>
@@ -162,7 +159,6 @@ const Message = (props) => {
               </div>
               
             </div>
-            
             {
               msgData ?
                 ReactHtmlParser(msgData.mail)
@@ -170,6 +166,10 @@ const Message = (props) => {
             }
           </div>
         </div>
+        <div>
+          <BasicButton name="Reply" location="/new" />
+        </div>
+
       </div>
     </div>
   )
