@@ -104,6 +104,20 @@ query($Address: String!, $After: String!){
 export const GET_FOLLOWINGS = gql`
 query($Address: String!, $After: String!){
   identity(address:$Address){
+    followers(after:$After){
+      list{
+        address
+        domain
+        avatar
+        alias
+      }
+      pageInfo{
+        endCursor
+        startCursor
+        hasPreviousPage
+        hasNextPage
+      }
+    }
     followings(after:$After){
       pageInfo{
         endCursor

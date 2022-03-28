@@ -1,0 +1,51 @@
+.msg-card{
+    background-color: var(---el6-col);
+    border: 1px solid var(---sec-txt);
+    border-radius: var(---brad);
+    padding: 1rem;
+}
+
+.message-card{
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 2rem;
+    align-items: center;
+}
+
+.social-wrap{
+    display: flex;
+    gap: 1rem;
+    text-align: center;
+}
+
+.main-msg{
+    padding: 2rem;
+}
+
+.msg-content{
+    display: grid;
+    grid-gap: 1rem;
+}
+.msg-date{
+    text-align: center;
+    margin: 1rem 0;
+}
+.top-inner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.data-btn-wrap{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.data-btn{
+    border: var(---sec-txt) 1px solid;
+    padding: 0.5rem;
+    border-radius: 1em;
+    background-color: var(---el10-col);
+}

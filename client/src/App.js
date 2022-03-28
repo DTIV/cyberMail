@@ -118,7 +118,7 @@ function App() {
         </div>
         
         <Routes >
-          <Route exact path="/message/:id" element={<Message user={getCurrentAccount}/>}/>
+          <Route exact path="/message/:id" element={<Message user={getCurrentAccount} provider={getProvider}/>}/>
           <Route exact path="/new" element={<CreateNew user={getCurrentAccount}/>}/>
           <Route exact path="*" element={
             <MailMain 

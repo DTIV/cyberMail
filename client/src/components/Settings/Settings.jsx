@@ -3,7 +3,7 @@ import axios from 'axios'
 import { useState, useEffect } from 'react';
 import BlockedList from './Blocked/BlockedList';
 import AddBlocked from './Blocked/AddBlocked';
-
+import Topbar from '../Sidebar/Topbar';
 const Settings = (props) => {
   const user = props.user;
 
@@ -35,6 +35,7 @@ const Settings = (props) => {
   
   return (
     <div className='main-sec center-main'>
+      <Topbar />
       <div className='lrg-title'>Settings</div>
       
       <div className='blocked-wrap'>

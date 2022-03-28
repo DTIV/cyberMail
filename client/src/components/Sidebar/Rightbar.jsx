@@ -12,7 +12,7 @@ const Rightbar = (props) => {
             setData(props.following.identity.followings.list)
         }
     }, [props.following])
-
+    
     return (
         <div className='rightbar-wrap'>
             <Search />

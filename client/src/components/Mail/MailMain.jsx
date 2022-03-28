@@ -29,7 +29,7 @@ const MailMain = (props) => {
     const path = window.location.pathname
     const user = props.user
     const { loading, error, data } = useQuery(GET_FOLLOWINGS, { variables : { "Address":user, "After": cursor.toString()}});
-    
+    console.log(data)
     useEffect(() => {
         setFollowing(data)
     }, [data])
@@ -62,7 +62,7 @@ const MailMain = (props) => {
         }
         getData()
     }, [user, update])
-    
+    console.log(data)
     if(props.connected){
         return (
             <div className="main">

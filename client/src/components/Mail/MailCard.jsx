@@ -7,6 +7,7 @@ import { BsFlagFill, BsFlag } from "react-icons/bs";
 import BlockIcon from '../Icons/BlockIcon';
 import axios from 'axios'
 import { useState, useEffect } from 'react';
+import DataButtons from '../Buttons/DataButtons';
 
 const MailCard = (props) => {
     const data = props.data;
@@ -101,27 +102,14 @@ const MailCard = (props) => {
 
                         </div>
                     </Link>
-                    <div className='data-tb'>
-                        {
-                            props.sent ?
-                            <></>
-                            :
-                            <BlockIcon 
-                            block={block} 
-                            unBlock={unBlockUser}
-                            blockUser={blockUser}/>
-                        }
-                        
-                        {
-                            props.sent ? 
-                            <></>
-                            :
-                            getFlag ?
-                            <button className='mail-flag ' onClick={flagMail}><BsFlagFill className='mail-icon flag-on flag-col' /></button>
-                            :<button className='mail-flag green-txt' onClick={flagMail}><BsFlag className='mail-icon sec-txt flag-col'/></button> 
-                        }
-                        <button className='mail-del' onClick={deleteMail}><FaTrash className='mail-icon trash-icon sec-txt'/></button>
-                    </div>
+                    <DataButtons 
+                        block={block} 
+                        unBlockUser={unBlockUser} 
+                        blockUser={blockUser}
+                        sent={props.sent}
+                        getFlag={getFlag}
+                        flagMail={flagMail}
+                        deleteMail={deleteMail}/>
                 </div>
             </div>
         )
