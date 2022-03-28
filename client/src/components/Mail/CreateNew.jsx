@@ -1,27 +1,10 @@
 import React, { Component } from 'react';
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { useState, useRef, useMemo } from 'react';
 import "./mail.css"
 import axios from 'axios'
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-
-const editorConfiguration = {
-    plugins: [ Image ],
-    toolbar: [ 'uploadImage' ],
-    image: {
-        toolbar: [
-            'imageStyle:block',
-            'imageStyle:side',
-            '|',
-            'toggleImageCaption',
-            'imageTextAlternative',
-            '|',
-            'linkImage'
-        ]
-    }
-};
+import Topbar from '../Sidebar/Topbar'
 
 
 const CreateNew = (props) => {
@@ -31,17 +14,21 @@ const CreateNew = (props) => {
     const [subject, setSubj] = useState("");
     
     const user = props.user;
-    // const handleOnChange = (e, editor) => {
-    //     const data = editor.getData();
-    //     console.log(data)
-    //     setBlog(data)
-    // }
-    
+
+    const modules = {
+        toolbar: [
+          [{ 'header': [1, 2, false] }],
+          ['bold', 'italic', 'underline','strike', 'blockquote'],
+          [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
+          ['link', 'image'],
+          ['clean']
+        ],
+    }
+
     const handleOnChange2 = (e) => {
-        // console.log(e)
         setBlog(e)
     }
-    console.log(blog)
+    
     const handleSubmit = async (e) => {
         e.preventDefault()
         try{
@@ -72,22 +59,9 @@ const CreateNew = (props) => {
         }
     }
 
-    const editor = useRef();
-    const handleInput = (event) => {
-        console.log(event); //Get the click event
-    }
-    const modules = {
-        toolbar: [
-          [{ 'header': [1, 2, false] }],
-          ['bold', 'italic', 'underline','strike', 'blockquote'],
-          [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
-          ['link', 'image'],
-          ['clean']
-        ],
-      }
-
     return (
-        <div>
+        <div className='main-sec center-main'>
+            <Topbar />
             <form className="create-mail-wrap" onSubmit={handleSubmit}>
                 <div className='mail-input-wrap'>
                     <div>
@@ -102,13 +76,6 @@ const CreateNew = (props) => {
                 </div>
                 
                 <div  className='editor-wrap'>
-                    {/* <CKEditor
-                        className='ckedit'
-                        // config={ editorConfiguration }
-                        editor={ ClassicEditor }
-                        data=""
-                        onChange = {handleOnChange}
-                    /> */}
                     <ReactQuill theme="snow" modules={modules} onChange = {handleOnChange2}/>
                 </div>
                 <div>

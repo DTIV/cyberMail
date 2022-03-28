@@ -11,15 +11,12 @@ const BlockCard = (props) => {
     const blockAddress = data.blockAddress
     const d = new Date(data.createdAt);
     const newDate = d.toLocaleString('en-US').split(", ")
-
-    const [block, setBlock] = useState(false)
-
+    
     const unBlockUser = async () => {
-        setBlock(true)
         try{
-            const res = await axios.delete(`/block/${data.blockAddress}`,{data:{"address": user}}) 
+            const res = await axios.delete(`/block/${data.blockAddress}`,{data:{"userAddress": user}})
             if(res){
-                props.pointer()
+                window.location.reload()
             }
         }catch(err){
             console.log(err)
@@ -40,13 +37,7 @@ const BlockCard = (props) => {
                     {newDate[0]}
                 </div>
                 <div className='block-sec'>
-                    {
-                        block ?
-                        <button className='mail-del'><CgBlock className='block-icon red-txt'/></button> 
-                        :
-                        <button className='mail-del' onClick={unBlockUser}><CgUnblock className='block-icon2 green-txt' /></button>
-                    }
-                    
+                    <button className='mail-del' onClick={unBlockUser}><CgUnblock className='block-icon2 green-txt' /></button>
                 </div>
             </div>
             

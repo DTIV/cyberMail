@@ -105,8 +105,14 @@ body{
 
 .main{
   display: grid;
-  grid-template-columns: 0.3fr 1fr 0.3fr;
+  grid-template-columns:1fr;
   height: 90vh;
+}
+
+
+.main-wrap{
+  display: grid;
+  grid-template-columns: 0.2fr 1fr;
 }
 
 @media screen and (max-width: 750px) {
@@ -126,22 +132,15 @@ body{
   .ham-btn{
     display: flex;
   }
+  .main-wrap{
+    grid-template-columns: 1fr;
+  }
 }
 
 @media screen and (max-width: 1750px) {
-  .main{
-    /* border: solid orange 1px; */
-    display: grid;
-    grid-template-columns: 0.3fr 1fr;
-    height: 90vh;
-  }
 
   .right-sidebar{
     display: none;
-  }
-
-  .contact-widget-btn{
-    display: flex;
   }
 
   .right-width{

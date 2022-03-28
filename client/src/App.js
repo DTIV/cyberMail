@@ -6,7 +6,12 @@ import { Routes,Router, Route, Link } from "react-router-dom";
 import { detectProvider } from "./functions";
 import MailMain from "./components/Mail/MailMain";
 import Showcase from "./components/Showcase/Showcase";
-
+import Message from "./components/Message/Message";
+import MenuSidebar from "./components/Sidebar/MenuSidebar";
+import CreateNew from "./components/Mail/CreateNew";
+import Settings from "./components/Settings/Settings";
+import Drafts from "./components/Drafts/Drafts";
+import Topbar from "./components/Sidebar/Topbar";
 function App() {
   const [connected, setConnected] = useState(false);
   const [getError, setError] = useState(false);
@@ -107,13 +112,24 @@ function App() {
       account={getCurrentAccount}
       currentNetwork={getCurrentNetwork}
       detect={detectProvider}/>
-      <Routes >
-        <Route exact path="*" element={
-          <MailMain 
-            connected={connected} 
-            connect={Connect}
-            user={getCurrentAccount}/>}/>
-      </Routes>
+      <div className="main-wrap">
+        <div className="main-sec left-sidebar">
+          <MenuSidebar/>
+        </div>
+        
+        <Routes >
+          <Route exact path="/message/:id" element={<Message user={getCurrentAccount}/>}/>
+          <Route exact path="/new" element={<CreateNew user={getCurrentAccount}/>}/>
+          <Route exact path="*" element={
+            <MailMain 
+              connected={connected} 
+              connect={Connect}
+              user={getCurrentAccount}/>}/>
+              <Route exact path="/drafts" element={<Drafts user={getCurrentAccount}/>}/>
+          <Route exact path="/settings" element={<Settings user={getCurrentAccount}/>}/>
+        </Routes>
+      </div>
+      
     </div>
     
   );

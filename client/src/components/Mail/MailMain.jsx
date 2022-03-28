@@ -16,7 +16,7 @@ import { useState, useEffect } from 'react';
 import {GET_FOLLOWINGS} from "../../query"
 import Topbar from '../Sidebar/Topbar'
 import axios from 'axios'
-import Message from './Message'
+import Message from '../Message/Message'
 import Drafts from '../Drafts/Drafts'
 
 const MailMain = (props) => {
@@ -26,7 +26,7 @@ const MailMain = (props) => {
     const [getInbox, setInbox] = useState([])
     const [getSent, setSent] = useState([])
     const [update, setUpdate] = useState(false)
-
+    const path = window.location.pathname
     const user = props.user
     const { loading, error, data } = useQuery(GET_FOLLOWINGS, { variables : { "Address":user, "After": cursor.toString()}});
     
@@ -44,6 +44,7 @@ const MailMain = (props) => {
 
     useEffect(() => {
         const getData = async () => {
+            const check = path.includes('message')
             if(user){
                 const res = await axios.get(`mail/all/${user}`)
                 if(res.status === 200){
@@ -65,23 +66,12 @@ const MailMain = (props) => {
     if(props.connected){
         return (
             <div className="main">
-                <div className="main-sec left-sidebar">
-                  <MenuSidebar inboxAmount={getInbox.length} sentAmount={getSent.length}/>
-                </div>
-                
                 <div className="main-sec center-main">
                     <Topbar following={data}/>
-                    <Routes>
-                        <Route exact path="/message/:id" element={<Message/>}/>
+                    <Routes>                   
                         <Route exact path="/" element={<MailList inbox={getInbox} user={user} updateList={updateList}/>}/>
-                        <Route exact path="/new" element={<CreateNew user={props.user}/>}/>
                         <Route exact path="/sent" element={<Sent sent={getSent} user={props.user} updateList={updateList}/>}/>
-                        <Route exact path="/settings" element={<Settings user={props.user}/>}/>
-                        <Route exact path="/drafts" element={<Drafts user={props.user}/>}/>
                     </Routes>
-                </div>
-                <div className="main-sec right-sidebar">
-                  <Rightbar following={data} size={"full"}/>
                 </div>
               </div>
           )

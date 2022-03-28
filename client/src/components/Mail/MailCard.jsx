@@ -95,7 +95,7 @@ const MailCard = (props) => {
                             {data.fromAddress.slice(0,2)+"..."+data.fromAddress.slice(38,43)}
                         </div>
                         <div className='data-tb'>
-                            <div>
+                            <div className='date-wrap'>
                                 {newDate}
                             </div>
 

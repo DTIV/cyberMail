@@ -4,7 +4,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import "../Sidebar/sidebar.css"
 import { useState, useEffect } from "react";
 import { jsUpdateSize } from '../../functions';
-
+import { AiOutlineContacts } from "react-icons/ai";
 const Topbar = (props) => {
 
     const [getWidth, setWidth] = useState(1000)
@@ -43,14 +43,14 @@ const Topbar = (props) => {
             <div className='mailtop'>
                 <MobileSidebar side={"left"} following={props.following}/>
                     <div className='widge-bg-left'>
-                        <div className='side-widget left-widget'>
-                            <button className='widget-btn ham-btn' onClick={openLeftNav}><GiHamburgerMenu/></button>
-                        </div>
+                        <button className='topbar-btn' onClick={openLeftNav}>
+                            <GiHamburgerMenu className='topbar-icon'/>
+                        </button>
                     </div>
                     <div className='widge-bg-right'>
-                        <div className='side-widget right-widget'>
-                            <button className='widget-btn contact-widget-btn' onClick={openRightNav}><GrContactInfo /></button>
-                        </div>
+                        <button className='topbar-btn' onClick={openRightNav}>
+                            <AiOutlineContacts className='topbar-icon'/>
+                        </button>
                     </div>
                     
                 <MobileSidebar side={"right"} following={props.following}/>

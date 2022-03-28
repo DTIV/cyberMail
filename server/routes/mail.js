@@ -41,6 +41,7 @@ router.delete("/:id", async (req,res) => {
 
 //get mail
 router.get("/:id", async (req,res) => {
+    console.log("here")
     try{
         const mail = await Mail.findById(req.params.id);
         res.status(200).json(mail)

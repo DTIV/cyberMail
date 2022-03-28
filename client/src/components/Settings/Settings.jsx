@@ -34,12 +34,12 @@ const Settings = (props) => {
   
   
   return (
-    <div>
+    <div className='main-sec center-main'>
       <div className='lrg-title'>Settings</div>
       
-      <div>
+      <div className='blocked-wrap'>
         <div className='md-title'>Blocked Users</div>
-        <AddBlocked />
+        <AddBlocked user={user}/>
         <BlockedList blocked={blocked} user={user} pointer={pointer}/>
       </div>
     </div>

@@ -1,9 +1,10 @@
 import React from 'react'
 import BlockCard from './BlockCard'
 import { useState, useEffect } from 'react';
+import "../settings.css"
 
 const BlockedList = (props) => {
-    const blocked = props.blocked;
+    let blocked = props.blocked;
     const user = props.user;
 
     if(blocked.length > 0){
@@ -11,7 +12,6 @@ const BlockedList = (props) => {
             <div className='block-list'>
                 {
                     blocked.map((e) => (
-            
                         <BlockCard data={e} key={e.blockAddress} user={user} pointer={props.pointer}/>
                     ))
                 }
@@ -19,7 +19,7 @@ const BlockedList = (props) => {
         ) 
     }else{
         return(
-            <div>No Blocked Users.</div>
+            <div className='no-blocked'>No Blocked Users.</div>
         )
     }
     

@@ -4,8 +4,10 @@ const { request } = require("express");
 
 //block user
 router.post("/:id", async (req, res) => {
+    
     try{
         const check = await BlockUser.findOne({blockAddress : req.params.id, userAddress : req.body.userAddress})
+        console.log(check)
         if(!check){
             if(req.body.userAddress != req.params.id){
                 const blockUser = await new BlockUser({
