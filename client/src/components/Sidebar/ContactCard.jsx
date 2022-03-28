@@ -1,6 +1,12 @@
 import React from 'react'
 import { useState, useEffect } from "react";
 import "./sidebar.css"
+import {
+    FollowButton,
+    Env,
+    Blockchain,
+  } from '@cyberconnect/react-follow-button';
+import '../Buttons/button.css'
 
 const ContactCard = (props) => {
     const [showContactInfo, setShowContact] = useState(false);
@@ -19,7 +25,7 @@ const ContactCard = (props) => {
                 elem.style.height = "0";
                 setShowContact(false)
             }else{
-                elem.style.height = "50px";
+                elem.style.height = "150px";
                 setShowContact(true)
             }
         }
@@ -62,12 +68,35 @@ const ContactCard = (props) => {
             </button>
             <div id={props.id} className="contact">
                 <div className='contact-card'>
+                    <div>{ props.data.recommendationReason ?
+                        props.data.recommendationReason
+                        :<></>}</div>
+                    <div>Followers: {props.data.followerCount}</div>
                     <div className='contact-btn-wrap'>
-                        <input className='c-btn' type="button" value={addressBtn} onClick={addressCopied}/>
+                        <div className='contact-btn-wrap'>
+                            <input className='basic-btn' type="button" value={addressBtn} onClick={addressCopied}/>
+                        </div>
+                        <div className='contact-btn-wrap'>
+                            {
+                                props.provider ?
+                                <FollowButton
+                                    provider={props.provider}
+                                    namespace="CyberConnect"
+                                    toAddr={props.data.address}
+                                    env={Env.STAGING}
+                                    chain={Blockchain.ETH}
+                                    onSuccess={(e) => {
+                                        console.log(e);
+                                    }}
+                                    onFailure={(e) => {
+                                        console.log(e);
+                                    }}
+                                />
+                                :<></>
+                            }
+                        </div>
                     </div>
-                    <div className='contact-btn-wrap'>
-                        <input className='c-btn' type="button" value={emailBtn} onClick={emailCopied}/>
-                    </div>
+                    
                 </div>
             </div>
         </div>

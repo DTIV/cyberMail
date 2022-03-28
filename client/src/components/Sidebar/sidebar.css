@@ -159,13 +159,21 @@
 }
 
 
+.contact-btn-wrap{
+  display: grid;
+  grid-template-columns: 1fr 0.3fr;
+}
 
 .contact-card{
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  padding: 0.5rem;
+  border-radius: var(---brad);
+  grid-template-columns: 1fr;
   grid-gap: 0.5rem;
   color: var(---bg-txt-col);
+  background-color: var(---el10-col);
 }
+
 
 .c-btn{
   padding: 0.5rem;

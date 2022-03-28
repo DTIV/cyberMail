@@ -4,34 +4,69 @@ import { useState, useEffect } from 'react';
 import Search from './Search';
 import Feature from './Feature';
 const Rightbar = (props) => {
-    const [data, setData] = useState("")
-    const lists=[1,2,3,4,5]
+    const [following, setFollowing] = useState("")
+    const [followers, setFollowers] = useState("")
 
     useEffect(() => {
         if(props.following){
-            setData(props.following.identity.followings.list)
+            setFollowing(props.following.identity.followings.list)
+            setFollowers(props.following.identity.followers.list)
         }
     }, [props.following])
-    
+
     return (
         <div className='rightbar-wrap'>
-            <Search />
+            <Search provider={props.provider}/>
             <div className='friends-list'>
-                <div>
-                    Following
-                </div>
-                {
-                    data.length > 0 ?
-                        data.map((e)=>(
-                            <ContactCard key={e.address} id={props.size+"_"+e.address} data={e}/>
-                        ))
-
-                    :
+                <div className='following-list'>
                     <div>
-                        No Contacts Yet.
-                        <Feature />
+                        Following
                     </div>
-                }
+                    {
+                        following.length > 0 ?
+                            following.map((e)=>(
+                                <ContactCard 
+                                    key={e.address} 
+                                    id={props.size+"_"+e.address} 
+                                    data={e}
+                                    provider={props.provider}
+                                    following={props.following}/>
+                            ))
+
+                        :
+                        <div>
+                            No Contacts Yet.
+                            {/* <Feature provider={props.provider} following={props.following}/> */}
+                        </div>
+                    }
+                </div>
+                <div>
+                    <div>
+                        Followers
+                    </div>
+                    {
+                        following.length > 0 ?
+                        following.map((e)=>(
+                            <ContactCard 
+                                key={e.address} 
+                                id={props.size+"_"+e.address} 
+                                data={e}
+                                provider={props.provider}
+                                following={props.following}/>
+                        ))
+                        :
+                        <div>
+                            No Contacts Yet.
+                        </div>
+                    }
+                </div>
+                <div className='feature-list'>
+                    {
+                        following.length < 1 && followers.length < 1 ?
+                        <Feature provider={props.provider} following={props.following}/>
+                        :<></>
+                    }
+                </div>
             </div>
         </div>
     )

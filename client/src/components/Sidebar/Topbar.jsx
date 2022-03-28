@@ -26,11 +26,9 @@ const Topbar = (props) => {
         }else{
             document.getElementById("mobile-left-mySidenav").style.width = "50vw";
         }
-        
     }
 
     function openRightNav() {
-        
         if(getWidth < 750){
             
             document.getElementById("mobile-right-mySidenav").style.width = "100vw";
@@ -38,10 +36,11 @@ const Topbar = (props) => {
             document.getElementById("mobile-right-mySidenav").style.width = "40vw";
         }
     }
+
     return (
         <div>
             <div className='mailtop'>
-                <MobileSidebar side={"left"} following={props.following}/>
+                <MobileSidebar side={"left"} following={props.following} provider={props.provider}/>
                     <div className='widge-bg-left'>
                         <button className='topbar-btn' onClick={openLeftNav}>
                             <GiHamburgerMenu className='topbar-icon'/>
@@ -53,7 +52,7 @@ const Topbar = (props) => {
                         </button>
                     </div>
                     
-                <MobileSidebar side={"right"} following={props.following}/>
+                <MobileSidebar side={"right"} following={props.following} provider={props.provider}/>
             </div>
             <div className='mail-title'>
                 {props.page}

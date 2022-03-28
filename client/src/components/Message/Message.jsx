@@ -117,7 +117,7 @@ const Message = (props) => {
   
   return (
     <div className='main-sec center-main'>
-      <Topbar />
+      <Topbar following={props.following} provider={props.provider}/>
       <div className='main-msg'>
         <div className='lrg-title'>
           {msgData.subject}

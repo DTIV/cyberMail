@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import BlockedList from './Blocked/BlockedList';
 import AddBlocked from './Blocked/AddBlocked';
 import Topbar from '../Sidebar/Topbar';
+import Showcase from '../Showcase/Showcase';
 const Settings = (props) => {
   const user = props.user;
 
@@ -32,19 +33,24 @@ const Settings = (props) => {
     getBlocked()
   }, [user, flag])
   
-  
-  return (
-    <div className='main-sec center-main'>
-      <Topbar />
-      <div className='lrg-title'>Settings</div>
-      
-      <div className='blocked-wrap'>
-        <div className='md-title'>Blocked Users</div>
-        <AddBlocked user={user}/>
-        <BlockedList blocked={blocked} user={user} pointer={pointer}/>
+  if(user){
+    return (
+      <div className='main-sec center-main'>
+        <Topbar following={props.following} provider={props.provider}/>
+        <div className='lrg-title'>Settings</div>
+        
+        <div className='blocked-wrap'>
+          <div className='md-title'>Blocked Users</div>
+          <AddBlocked user={user}/>
+          <BlockedList blocked={blocked} user={user} pointer={pointer}/>
+        </div>
       </div>
-    </div>
-  )
+    )
+  }else{
+    return(
+      <Showcase />
+    )
+  }
 }
 
 export default Settings

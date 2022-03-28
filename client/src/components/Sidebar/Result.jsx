@@ -22,7 +22,10 @@ const Result = (props) => {
     if(data){
         return (
             <div>
-                <ContactCard data={data.identity} id={"result_"+data.identity.address}/>
+                <ContactCard 
+                    data={data.identity} 
+                    id={"result_"+data.identity.address}
+                    provider={props.provider}/>
             </div>
         )
     }

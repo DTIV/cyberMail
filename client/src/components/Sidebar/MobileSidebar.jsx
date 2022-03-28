@@ -28,7 +28,7 @@ const MobileSidebar = (props) => {
     return(
       <div id={`mobile-${props.side}-mySidenav`} className={`mobile-sidenav mobile-${props.side}-sidenav`}>
         <a className="closebtn" onClick={(e)=>closeNav(e)} data-side={props.side}>&times;</a>
-        <Rightbar following={props.following} size={"mobile"}/>
+        <Rightbar following={props.following} size={"mobile"} provider={props.provider}/>
       </div>
     ) 
   }

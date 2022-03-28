@@ -5,7 +5,7 @@ import {
 import { GET_FEATURED } from '../../query'
 import ContactCard from './ContactCard';
 
-const Feature = () => {
+const Feature = (props) => {
     const { loading, error, data } = useQuery(GET_FEATURED);
     if(loading){
         return (
@@ -26,7 +26,11 @@ const Feature = () => {
                 </div>
                 {
                     featured.map((e)=>(
-                        <ContactCard key={`featured_${e.address}`} id={`featured_${e.address}`} data={e}/>
+                        <ContactCard 
+                            key={`featured_${e.address}`} 
+                            id={`featured_${e.address}`} 
+                            data={e}
+                            provider={props.provider}/>
                     ))
                 }
             </div>

@@ -12,6 +12,12 @@ import CreateNew from "./components/Mail/CreateNew";
 import Settings from "./components/Settings/Settings";
 import Drafts from "./components/Drafts/Drafts";
 import Topbar from "./components/Sidebar/Topbar";
+
+import {
+  useQuery,
+} from "@apollo/client";
+
+import {GET_FOLLOWINGS} from "./query"
 function App() {
   const [connected, setConnected] = useState(false);
   const [getError, setError] = useState(false);
@@ -104,6 +110,9 @@ function App() {
     }
   }
 
+  const [cursor, setCursor] = useState(20)
+  const { loading, error, data } = useQuery(GET_FOLLOWINGS, { variables : { "Address":getCurrentAccount, "After": cursor.toString()}});
+
   return (
     <div className="App">
       <Header 
@@ -118,15 +127,29 @@ function App() {
         </div>
         
         <Routes >
-          <Route exact path="/message/:id" element={<Message user={getCurrentAccount} provider={getProvider}/>}/>
-          <Route exact path="/new" element={<CreateNew user={getCurrentAccount}/>}/>
+          <Route exact path="/message/:id" element={<Message 
+            user={getCurrentAccount} 
+            provider={getProvider}
+            following={data}/>}/>
+          <Route exact path="/new" element={<CreateNew 
+            user={getCurrentAccount} 
+            provider={getProvider}
+            following={data}/>}/>
           <Route exact path="*" element={
             <MailMain 
               connected={connected} 
               connect={Connect}
-              user={getCurrentAccount}/>}/>
-              <Route exact path="/drafts" element={<Drafts user={getCurrentAccount}/>}/>
-          <Route exact path="/settings" element={<Settings user={getCurrentAccount}/>}/>
+              user={getCurrentAccount}
+              provider={getProvider}
+              following={data}/>}/>
+              <Route exact path="/drafts" element={<Drafts 
+                user={getCurrentAccount} 
+                provider={getProvider}
+                following={data}/>}/>
+          <Route exact path="/settings" element={<Settings 
+            user={getCurrentAccount} 
+            provider={getProvider}
+            following={data}/>}/>
         </Routes>
       </div>
       

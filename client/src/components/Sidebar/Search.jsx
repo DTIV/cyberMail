@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import Result from './Result';
 
-const Search = () => {
+const Search = (props) => {
     const [search, setSearch] = useState("")
     const [address, setAddress] = useState("")
 
@@ -22,7 +22,7 @@ const Search = () => {
             {
                 address ?
                 <div>
-                    <Result address={address}/>
+                    <Result address={address} provider={props.provider}/>
                 </div>
                 :<></>
             }

@@ -12,15 +12,15 @@ import "../Sidebar/sidebar.css"
 import {
     useQuery,
   } from "@apollo/client";
-import { useState, useEffect } from 'react';
+
 import {GET_FOLLOWINGS} from "../../query"
 import Topbar from '../Sidebar/Topbar'
 import axios from 'axios'
 import Message from '../Message/Message'
 import Drafts from '../Drafts/Drafts'
-
+import { useState, useEffect } from 'react';
 const MailMain = (props) => {
-
+    console.log(props.following)
     const [cursor, setCursor] = useState(20)
     const [following, setFollowing] = useState("")
     const [getInbox, setInbox] = useState([])
@@ -28,11 +28,6 @@ const MailMain = (props) => {
     const [update, setUpdate] = useState(false)
     const path = window.location.pathname
     const user = props.user
-    const { loading, error, data } = useQuery(GET_FOLLOWINGS, { variables : { "Address":user, "After": cursor.toString()}});
-    console.log(data)
-    useEffect(() => {
-        setFollowing(data)
-    }, [data])
 
     const updateList = async () => {
         if(update){
@@ -62,14 +57,17 @@ const MailMain = (props) => {
         }
         getData()
     }, [user, update])
-    console.log(data)
+
     if(props.connected){
         return (
             <div className="main">
                 <div className="main-sec center-main">
-                    <Topbar following={data}/>
+                    <Topbar following={props.following} provider={props.provider}/>
                     <Routes>                   
-                        <Route exact path="/" element={<MailList inbox={getInbox} user={user} updateList={updateList}/>}/>
+                        <Route exact path="/" element={<MailList 
+                            inbox={getInbox} 
+                            user={user} 
+                            updateList={updateList}/>}/>
                         <Route exact path="/sent" element={<Sent sent={getSent} user={props.user} updateList={updateList}/>}/>
                     </Routes>
                 </div>

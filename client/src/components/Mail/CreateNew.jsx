@@ -5,7 +5,7 @@ import axios from 'axios'
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import Topbar from '../Sidebar/Topbar'
-
+import Showcase from '../Showcase/Showcase';
 
 const CreateNew = (props) => {
     const [blog, setBlog] = useState("");
@@ -14,7 +14,7 @@ const CreateNew = (props) => {
     const [subject, setSubj] = useState("");
     
     const user = props.user;
-
+    
     const modules = {
         toolbar: [
           [{ 'header': [1, 2, false] }],
@@ -58,33 +58,39 @@ const CreateNew = (props) => {
             }
         }
     }
-
-    return (
-        <div className='main-sec center-main'>
-            <Topbar />
-            <form className="create-mail-wrap" onSubmit={handleSubmit}>
-                <div className='mail-input-wrap'>
-                    <div>
-                        <input className='mail-input' type="text" placeholder='To Address' onChange={(e)=>setToAddress(e.target.value)}/>
+    if(user){
+        return (
+            <div className='main-sec center-main'>
+                <Topbar following={props.following} provider={props.provider}/>
+                <form className="create-mail-wrap" onSubmit={handleSubmit}>
+                    <div className='mail-input-wrap'>
+                        <div>
+                            <input className='mail-input' type="text" placeholder='To Address' onChange={(e)=>setToAddress(e.target.value)}/>
+                        </div>
+                        <div>
+                            <input className='mail-input' type="text" placeholder='To Email' onChange={(e)=>setToEmail(e.target.value)}/>
+                        </div>
+                        <div>
+                            <input className='mail-input' type="text" placeholder='Subject' onChange={(e)=>setSubj(e.target.value)}/>
+                        </div>
+                    </div>
+                    
+                    <div  className='editor-wrap'>
+                        <ReactQuill theme="snow" modules={modules} onChange = {handleOnChange2}/>
                     </div>
                     <div>
-                        <input className='mail-input' type="text" placeholder='To Email' onChange={(e)=>setToEmail(e.target.value)}/>
+                        <input className='mail-submit mail-input' type="submit" value="Send"/>
                     </div>
-                    <div>
-                        <input className='mail-input' type="text" placeholder='Subject' onChange={(e)=>setSubj(e.target.value)}/>
-                    </div>
-                </div>
-                
-                <div  className='editor-wrap'>
-                    <ReactQuill theme="snow" modules={modules} onChange = {handleOnChange2}/>
-                </div>
-                <div>
-                    <input className='mail-submit mail-input' type="submit" value="Send"/>
-                </div>
-            </form>
-        </div>
-        
-    );
+                </form>
+            </div>
+            
+        );
+    }else{
+        return(
+            <Showcase />
+        )
+    }
+    
 }
 
 export default CreateNew
