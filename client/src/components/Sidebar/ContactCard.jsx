@@ -11,7 +11,6 @@ import '../Buttons/button.css'
 const ContactCard = (props) => {
     const [showContactInfo, setShowContact] = useState(false);
     const [addressBtn, setAddressBtn] = useState("Address")
-    const [emailBtn, setEmailBtn] = useState("Email")
     const [getID, setID] = useState("")
 
     useEffect(() => {
@@ -31,14 +30,6 @@ const ContactCard = (props) => {
         }
     }
     
-    const emailCopied = () =>{
-        navigator.clipboard.writeText("EMAIL COPIED");
-        setEmailBtn("Copied!")
-        setTimeout(() => {
-            setEmailBtn("Email");
-        }, 1000);
-    }
-
     const addressCopied = () => {
         navigator.clipboard.writeText(props.data.address);
         setAddressBtn("Copied!")

@@ -36,7 +36,6 @@ const Rightbar = (props) => {
                         :
                         <div>
                             No Contacts Yet.
-                            {/* <Feature provider={props.provider} following={props.following}/> */}
                         </div>
                     }
                 </div>

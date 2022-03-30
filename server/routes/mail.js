@@ -9,8 +9,10 @@ const BlockUser = require("../models/BlockUser");
 //create mail
 router.post("/", async (req, res) => {
     const toAddress = req.body.toAddress
-    const isBlocked = await BlockUser.findOne({userAddress: toAddress, blockAddress: req.body.userAddress})
-    if(!isBlocked){
+    const isBlocked = await BlockUser.find({userAddress: toAddress})
+    const check = isBlocked.filter((e) => {return e.blockAddress === req.body.fromAddress})
+    console.log(check)
+    if(check.length < 1){
         const newMail = new Mail(req.body)
         try{
             const savedPost = await newMail.save();
@@ -46,6 +48,7 @@ router.get("/:id", async (req,res) => {
         const mail = await Mail.findById(req.params.id);
         res.status(200).json(mail)
     }catch(err){
+        console.log(err)
         res.status(500).json(err)
     }
 })

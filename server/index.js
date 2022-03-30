@@ -45,6 +45,7 @@ app.get("/", (req, res)=>{
 })
 
 // server
-app.listen(process.env.SERVER_PORT, ()=>{
-    console.log(`Server is running on port: ${process.env.SERVER_PORT}`)
+let serv = process.env.PORT || 5000
+app.listen(serv, ()=>{
+    console.log(`Server is running on ${serv}`)
 })

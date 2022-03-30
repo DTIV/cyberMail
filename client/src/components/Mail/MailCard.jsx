@@ -1,10 +1,7 @@
 import React from 'react'
 import "../Sidebar/sidebar.css"
 import "../../mobile.css"
-import { FaTrash } from "react-icons/fa";
 import { Link } from 'react-router-dom'
-import { BsFlagFill, BsFlag } from "react-icons/bs";
-import BlockIcon from '../Icons/BlockIcon';
 import axios from 'axios'
 import { useState, useEffect } from 'react';
 import DataButtons from '../Buttons/DataButtons';

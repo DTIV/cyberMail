@@ -1,10 +1,7 @@
 import React from 'react'
-import { useState, useEffect } from "react";
 import { Link } from 'react-router-dom'
 import Rightbar from './Rightbar';
 import "./sidebar.css"
-
-
 
 const MobileSidebar = (props) => {
   

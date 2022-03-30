@@ -1,24 +1,14 @@
 import React from 'react'
-import MenuSidebar from '../Sidebar/MenuSidebar'
 import MailList from './MailList'
-import Rightbar from '../Sidebar/Rightbar'
 import Showcase from '../Showcase/Showcase'
 import { Routes,Router, Route, Link } from "react-router-dom";
-import CreateNew from './CreateNew'
 import Sent from './Sent'
-import Settings from '../Settings/Settings'
 import "./mail.css"
 import "../Sidebar/sidebar.css"
-import {
-    useQuery,
-  } from "@apollo/client";
-
-import {GET_FOLLOWINGS} from "../../query"
 import Topbar from '../Sidebar/Topbar'
 import axios from 'axios'
-import Message from '../Message/Message'
-import Drafts from '../Drafts/Drafts'
 import { useState, useEffect } from 'react';
+
 const MailMain = (props) => {
     console.log(props.following)
     const [cursor, setCursor] = useState(20)
@@ -41,7 +31,7 @@ const MailMain = (props) => {
         const getData = async () => {
             const check = path.includes('message')
             if(user){
-                const res = await axios.get(`mail/all/${user}`)
+                const res = await axios.get(`/mail/all/${user}`)
                 if(res.status === 200){
                     const messages = res.data
                     const sent = messages.filter((e) => {

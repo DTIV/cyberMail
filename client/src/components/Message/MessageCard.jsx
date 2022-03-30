@@ -3,14 +3,13 @@ import {
     useQuery,
 } from "@apollo/client";
 import { GET_ID_DATA } from '../../query'
-import ContactCard from '../Sidebar/ContactCard';
 import { FaTwitterSquare} from "react-icons/fa";
 import {
     FollowButton,
     Env,
     Blockchain,
   } from '@cyberconnect/react-follow-button';
-import { useState, useEffect } from 'react';
+
 const MessageCard = (props) => {
     const msgData = props.data
     
@@ -75,7 +74,7 @@ const MessageCard = (props) => {
                     }
                     
                 </div>
-                <div>
+                <div className='follow-wrap'>
                     {
                         props.provider ?
                         <FollowButton

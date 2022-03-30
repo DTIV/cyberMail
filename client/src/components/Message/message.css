@@ -10,6 +10,8 @@
     grid-template-columns: repeat(2, auto);
     gap: 2rem;
     align-items: center;
+    word-wrap: break-word;
+    word-break: break-all;
 }
 
 .social-wrap{
@@ -35,6 +37,8 @@
     justify-content: space-between;
     align-items: center;
     gap: 0.5rem;
+    word-wrap: break-word;
+    word-break: break-all;
 }
 
 .data-btn-wrap{
@@ -77,4 +81,24 @@
         justify-content: space-evenly;
     }
   }
-  
+
+@media screen and (max-width: 500px) {
+    .social-wrap{
+        display: block;
+    }
+    .top-inner{
+        display: block;
+    }
+
+    .twit-wrap{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .follow-wrap, .from-img{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
