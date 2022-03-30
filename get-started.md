@@ -8,6 +8,8 @@ description: How to deploy CyberMail locally
 
 {% embed url="https://github.com/DTIV/cyberMail" %}
 
+### SERVER
+
 #### Get a MongoDB URI
 
 Create a MongoDB Atlas Cloud Account and get a URI to connect to the database.
@@ -31,3 +33,24 @@ MONGO_URL = "mongodb+srv://[USER]:[PASSWORD]@cluster0.jrbh4.mongodb.net/cyberMai
 ```
 npm install
 ```
+
+#### Start the server
+
+```
+npm start
+```
+
+### CLIENT
+
+#### Install Dependencies
+
+```
+npm install
+```
+
+#### Start Client
+
+```
+npm start
+```
+
