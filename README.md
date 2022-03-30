@@ -31,3 +31,6 @@ Backend Deployment
 A Demo video of CyberMail
 {% endembed %}
 
+{% content-ref url="get-started.md" %}
+[get-started.md](get-started.md)
+{% endcontent-ref %}
