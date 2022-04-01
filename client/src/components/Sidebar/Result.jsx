@@ -19,6 +19,7 @@ const Result = (props) => {
             <div>No Results.</div>
         )
     }
+    console.log(props.address)
     if(data){
         return (
             <div>

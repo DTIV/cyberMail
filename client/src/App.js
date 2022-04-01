@@ -110,8 +110,7 @@ function App() {
     }
   }
 
-  const [cursor, setCursor] = useState(20)
-  const { loading, error, data } = useQuery(GET_FOLLOWINGS, { variables : { "Address":getCurrentAccount, "After": cursor.toString()}});
+  const { loading, error, data } = useQuery(GET_FOLLOWINGS, { variables : { "Address":getCurrentAccount }});
 
   return (
     <div className="App">

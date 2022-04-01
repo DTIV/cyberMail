@@ -10,7 +10,7 @@ import axios from 'axios'
 import { useState, useEffect } from 'react';
 
 const MailMain = (props) => {
-    console.log(props.following)
+
     const [cursor, setCursor] = useState(20)
     const [following, setFollowing] = useState("")
     const [getInbox, setInbox] = useState([])

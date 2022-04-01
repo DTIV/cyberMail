@@ -1,19 +1,22 @@
 import React from 'react'
 import ContactCard from './ContactCard'
-import { useState, useEffect } from 'react';
+import { useState, useEffect,useRef } from 'react';
 import Search from './Search';
 import Feature from './Feature';
+
 const Rightbar = (props) => {
     const [following, setFollowing] = useState("")
     const [followers, setFollowers] = useState("")
-
+    const mounted = useRef(false);
     useEffect(() => {
         if(props.following){
+            mounted.current = true;
             setFollowing(props.following.identity.followings.list)
             setFollowers(props.following.identity.followers.list)
+            return () => (mounted.current = false);
         }
     }, [props.following])
-
+    
     return (
         <div className='rightbar-wrap'>
             <Search provider={props.provider}/>
@@ -32,7 +35,6 @@ const Rightbar = (props) => {
                                     provider={props.provider}
                                     following={props.following}/>
                             ))
-
                         :
                         <div>
                             No Contacts Yet.
@@ -44,8 +46,8 @@ const Rightbar = (props) => {
                         Followers
                     </div>
                     {
-                        following.length > 0 ?
-                        following.map((e)=>(
+                        followers.length > 0 ?
+                        followers.map((e)=>(
                             <ContactCard 
                                 key={e.address} 
                                 id={props.size+"_"+e.address} 

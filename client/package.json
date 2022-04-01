@@ -8,6 +8,7 @@
     "@ckeditor/ckeditor5-image": "^33.0.0",
     "@ckeditor/ckeditor5-react": "^4.0.0",
     "@cyberconnect/react-follow-button": "^2.1.2",
+    "@cyberlab/cyberconnect": "^4.4.1",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",

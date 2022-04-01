@@ -102,9 +102,9 @@ query($Address: String!, $After: String!){
 `
 
 export const GET_FOLLOWINGS = gql`
-query($Address: String!, $After: String!){
+query($Address: String!){
   identity(address:$Address){
-    followers(after:$After){
+    followers{
       list{
         address
         domain
@@ -118,7 +118,7 @@ query($Address: String!, $After: String!){
         hasNextPage
       }
     }
-    followings(after:$After){
+    followings{
       pageInfo{
         endCursor
         startCursor
