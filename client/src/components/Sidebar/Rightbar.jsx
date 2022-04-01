@@ -8,6 +8,7 @@ const Rightbar = (props) => {
     const [following, setFollowing] = useState("")
     const [followers, setFollowers] = useState("")
     const mounted = useRef(false);
+    
     useEffect(() => {
         if(props.following){
             mounted.current = true;
@@ -62,7 +63,11 @@ const Rightbar = (props) => {
                     }
                 </div>
                 <div className='feature-list'>
-                    <Feature provider={props.provider} following={props.following}/>
+                    {
+                        following.length < 1 && followers.length < 1 ?
+                        <Feature provider={props.provider} following={props.following}/>
+                        :<></>
+                    }
                 </div>
             </div>
         </div>

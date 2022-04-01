@@ -16,9 +16,7 @@ const ContactCard = (props) => {
     },[]);
       
     useEffect(() => {
-        mounted.current = true;
         setID(props.id)
-        return () => (mounted.current = false);
     },[props.id]);
       
     const showContact = () => {
