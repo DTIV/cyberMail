@@ -5,6 +5,7 @@ import {
 import { GET_FEATURED } from '../../query'
 import ContactCard from './ContactCard';
 import { useEffect, useRef } from 'react';
+
 const Feature = (props) => {
     const { loading, error, data } = useQuery(GET_FEATURED);
     const mounted = useRef(false);

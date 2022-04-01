@@ -62,11 +62,7 @@ const Rightbar = (props) => {
                     }
                 </div>
                 <div className='feature-list'>
-                    {
-                        following.length < 1 && followers.length < 1 ?
-                        <Feature provider={props.provider} following={props.following}/>
-                        :<></>
-                    }
+                    <Feature provider={props.provider} following={props.following}/>
                 </div>
             </div>
         </div>

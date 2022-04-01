@@ -12,13 +12,14 @@ const ContactCard = (props) => {
 
     useEffect(() => {
         mounted.current = true;
+        return () => (mounted.current = false);
+    },[]);
+      
+    useEffect(() => {
+        mounted.current = true;
         setID(props.id)
         return () => (mounted.current = false);
     },[props.id]);
-
-    // useEffect(() => {
-    //     setID(props.id)
-    // }, [props.id])
       
     const showContact = () => {
         if(getID){   
@@ -41,6 +42,7 @@ const ContactCard = (props) => {
             setAddressBtn("Address");
         }, 1000);
     }
+
     if(mounted.current){
         return (
             <div className='friend-card'>
@@ -80,8 +82,7 @@ const ContactCard = (props) => {
                                     :<></>
                                 }
                             </div>
-                        </div>
-                        
+                        </div>      
                     </div>
                 </div>
             </div>
