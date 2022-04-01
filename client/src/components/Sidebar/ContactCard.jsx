@@ -24,7 +24,6 @@ const ContactCard = (props) => {
     const showContact = () => {
         if(getID){   
             var elem = document.getElementById(`${getID}`)
-            console.log(showContactInfo)
             if(showContactInfo){
                 elem.style.height = "0";
                 setShowContact(false)

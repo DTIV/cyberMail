@@ -21,7 +21,7 @@ View GitBook Here: [https://dtiv.gitbook.io/cybermail/](https://dtiv.gitbook.io/
 
 > I was unable to connect MongoDB to Heroku for deployment in time. The deployed preview will not save messages. I have included a demo video and instructions to deploy locally.
 
-{% embed url="https://delightful-chimera-377b52.netlify.app" %}
+{% embed url="https://dreamy-concha-632574.netlify.app/" %}
 View Live Frontend Application
 {% endembed %}
 
